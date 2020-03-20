@@ -16,6 +16,13 @@
 		96EEE24C24256C58001F05AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE24A24256C58001F05AA /* LaunchScreen.storyboard */; };
 		96EEE25724256C58001F05AA /* DiamondsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE25624256C58001F05AA /* DiamondsTests.swift */; };
 		96EEE26224256C58001F05AA /* DiamondsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE26124256C58001F05AA /* DiamondsUITests.swift */; };
+		96EEE27024257001001F05AA /* GroundTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE26F24257001001F05AA /* GroundTileSet.sks */; };
+		96EEE280242573C0001F05AA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE27F242573C0001F05AA /* Controller.swift */; };
+		96EEE28424257451001F05AA /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE28324257451001F05AA /* Actor.swift */; };
+		96EEE2862425745A001F05AA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE2852425745A001F05AA /* Command.swift */; };
+		96EEE288242575B0001F05AA /* CommandMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE287242575B0001F05AA /* CommandMove.swift */; };
+		96EEE28A242575BD001F05AA /* CommandJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE289242575BD001F05AA /* CommandJump.swift */; };
+		96EEE28C24257788001F05AA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE28B24257788001F05AA /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,13 @@
 		96EEE25D24256C58001F05AA /* DiamondsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiamondsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EEE26124256C58001F05AA /* DiamondsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondsUITests.swift; sourceTree = "<group>"; };
 		96EEE26324256C58001F05AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96EEE26F24257001001F05AA /* GroundTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GroundTileSet.sks; sourceTree = "<group>"; };
+		96EEE27F242573C0001F05AA /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		96EEE28324257451001F05AA /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		96EEE2852425745A001F05AA /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		96EEE287242575B0001F05AA /* CommandMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMove.swift; sourceTree = "<group>"; };
+		96EEE289242575BD001F05AA /* CommandJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandJump.swift; sourceTree = "<group>"; };
+		96EEE28B24257788001F05AA /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +115,17 @@
 		96EEE23A24256C56001F05AA /* Diamonds */ = {
 			isa = PBXGroup;
 			children = (
+				96EEE27E242573AC001F05AA /* Controller */,
 				96EEE23B24256C56001F05AA /* AppDelegate.swift */,
 				96EEE23D24256C56001F05AA /* GameScene.sks */,
 				96EEE24124256C56001F05AA /* GameScene.swift */,
 				96EEE24324256C56001F05AA /* GameViewController.swift */,
+				96EEE28B24257788001F05AA /* Player.swift */,
 				96EEE24524256C56001F05AA /* Main.storyboard */,
 				96EEE24824256C58001F05AA /* Assets.xcassets */,
 				96EEE24A24256C58001F05AA /* LaunchScreen.storyboard */,
 				96EEE24D24256C58001F05AA /* Info.plist */,
+				96EEE26F24257001001F05AA /* GroundTileSet.sks */,
 			);
 			path = Diamonds;
 			sourceTree = "<group>";
@@ -129,6 +146,34 @@
 				96EEE26324256C58001F05AA /* Info.plist */,
 			);
 			path = DiamondsUITests;
+			sourceTree = "<group>";
+		};
+		96EEE27E242573AC001F05AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				96EEE282242573D4001F05AA /* Actor */,
+				96EEE281242573C8001F05AA /* Command */,
+				96EEE27F242573C0001F05AA /* Controller.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		96EEE281242573C8001F05AA /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				96EEE2852425745A001F05AA /* Command.swift */,
+				96EEE287242575B0001F05AA /* CommandMove.swift */,
+				96EEE289242575BD001F05AA /* CommandJump.swift */,
+			);
+			path = Command;
+			sourceTree = "<group>";
+		};
+		96EEE282242573D4001F05AA /* Actor */ = {
+			isa = PBXGroup;
+			children = (
+				96EEE28324257451001F05AA /* Actor.swift */,
+			);
+			path = Actor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +284,7 @@
 				96EEE23E24256C56001F05AA /* GameScene.sks in Resources */,
 				96EEE24924256C58001F05AA /* Assets.xcassets in Resources */,
 				96EEE24C24256C58001F05AA /* LaunchScreen.storyboard in Resources */,
+				96EEE27024257001001F05AA /* GroundTileSet.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +312,12 @@
 				96EEE24224256C56001F05AA /* GameScene.swift in Sources */,
 				96EEE24424256C56001F05AA /* GameViewController.swift in Sources */,
 				96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */,
+				96EEE288242575B0001F05AA /* CommandMove.swift in Sources */,
+				96EEE280242573C0001F05AA /* Controller.swift in Sources */,
+				96EEE28424257451001F05AA /* Actor.swift in Sources */,
+				96EEE2862425745A001F05AA /* Command.swift in Sources */,
+				96EEE28C24257788001F05AA /* Player.swift in Sources */,
+				96EEE28A242575BD001F05AA /* CommandJump.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
