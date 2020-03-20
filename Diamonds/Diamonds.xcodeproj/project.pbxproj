@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE23B24256C56001F05AA /* AppDelegate.swift */; };
 		96EEE23E24256C56001F05AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE23D24256C56001F05AA /* GameScene.sks */; };
-		96EEE24024256C56001F05AA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE23F24256C56001F05AA /* Actions.sks */; };
 		96EEE24224256C56001F05AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE24124256C56001F05AA /* GameScene.swift */; };
 		96EEE24424256C56001F05AA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE24324256C56001F05AA /* GameViewController.swift */; };
 		96EEE24724256C56001F05AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE24524256C56001F05AA /* Main.storyboard */; };
@@ -40,7 +39,6 @@
 		96EEE23824256C56001F05AA /* Diamonds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diamonds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EEE23B24256C56001F05AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96EEE23D24256C56001F05AA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		96EEE23F24256C56001F05AA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		96EEE24124256C56001F05AA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		96EEE24324256C56001F05AA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		96EEE24624256C56001F05AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 			children = (
 				96EEE23B24256C56001F05AA /* AppDelegate.swift */,
 				96EEE23D24256C56001F05AA /* GameScene.sks */,
-				96EEE23F24256C56001F05AA /* Actions.sks */,
 				96EEE24124256C56001F05AA /* GameScene.swift */,
 				96EEE24324256C56001F05AA /* GameViewController.swift */,
 				96EEE24524256C56001F05AA /* Main.storyboard */,
@@ -242,7 +239,6 @@
 				96EEE23E24256C56001F05AA /* GameScene.sks in Resources */,
 				96EEE24924256C58001F05AA /* Assets.xcassets in Resources */,
 				96EEE24C24256C58001F05AA /* LaunchScreen.storyboard in Resources */,
-				96EEE24024256C56001F05AA /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +448,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amoryrouault.Diamonds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -470,7 +466,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amoryrouault.Diamonds;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
