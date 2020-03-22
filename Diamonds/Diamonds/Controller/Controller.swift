@@ -98,17 +98,17 @@ class Controller {
         
         let buttonA = SKSpriteNode(texture: aTexture)
         buttonA.name = "buttonA"
-        buttonA.position.x = 200
+        buttonA.position.x = 500
         buttonA.zPosition = 10
         
         let buttonLeft = SKSpriteNode(texture: leftArrowTexture)
         buttonLeft.name = "buttonLeft"
-        buttonLeft.position.x = -200
+        buttonLeft.position.x = -500
         buttonLeft.zPosition = 10
         
         let buttonRight = SKSpriteNode(texture: rightArrowTexture)
         buttonRight.name = "buttonRight"
-        buttonRight.position.x = 0
+        buttonRight.position.x = -400
         buttonRight.zPosition = 10
         
         return [buttonA, buttonLeft, buttonRight]

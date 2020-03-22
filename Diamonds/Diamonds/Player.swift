@@ -8,6 +8,13 @@
 
 import SpriteKit
 
+enum PlayerActionsKeys: String {
+    case MOVE_LEFT = "moveLeft"
+    case ANIMATE_LEFT = "animateLeft"
+    case MOVE_RIGHT = "moveRight"
+    case ANIMATE_RIGHT = "animateRIGHT"
+}
+
 class Player: SKSpriteNode, Actor {
     
     private var moveLeftFrames: [SKTexture] = []
@@ -57,28 +64,26 @@ class Player: SKSpriteNode, Actor {
     func move(direction: Direction) {
         switch direction {
         case .LEFT:
-            self.run(SKAction.repeatForever(self.moveLeftAction), withKey: "moveLeft")
-            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveLeftFrames, timePerFrame: 0.1)))
+            self.run(SKAction.repeatForever(self.moveLeftAction), withKey: PlayerActionsKeys.MOVE_LEFT.rawValue)
+            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveLeftFrames, timePerFrame: 0.1)), withKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue)
             
             break
         case .RIGHT:
-            self.run(SKAction.repeatForever(self.moveRightAction), withKey: "moveRight")
-            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveRightFrames, timePerFrame: 0.1)))
+            self.run(SKAction.repeatForever(self.moveRightAction), withKey: PlayerActionsKeys.MOVE_RIGHT.rawValue)
+            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveRightFrames, timePerFrame: 0.1)), withKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue)
             break
         }
 
     }
     
-    func stopMoving() {
-        self.removeAllActions()
-        
-        self.texture = SKTexture(imageNamed: "alienGreen_front")
+    func stop(actionKey: PlayerActionsKeys) {
+        self.removeAction(forKey: actionKey.rawValue)
     }
     
     func jump() {
         print("Make a great jump")
-        let jumpUpAction = SKAction.moveBy(x: 0, y: 138, duration: 0.2)
-        let jumpDownAction = SKAction.moveBy(x: 0, y: -138, duration: 0.2)
+        let jumpUpAction = SKAction.moveBy(x: 0, y: 250, duration: 0.3)
+        let jumpDownAction = SKAction.moveBy(x: 0, y: -250, duration: 0.3)
         let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
         self.run(jumpSequence)
     }

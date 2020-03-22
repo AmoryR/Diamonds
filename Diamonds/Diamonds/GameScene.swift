@@ -18,32 +18,56 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         self.player = self.childNode(withName: "Player") as? Player
         
-        print(self.player!)
-        
-        self.controller = Controller(actor: self.player!)
-        let buttons = self.controller?.createButtons()
-        
-        for button in buttons! {
-//            self.scene?.camera?.addChild(button)
-            self.addChild(button)
-        }
-        
         self.myCamera = SKCameraNode()
         self.camera = self.myCamera
+        
+        self.player?.addChild(self.myCamera)
+        
+        self.controller = Controller(actor: self.player!)
+            let buttons = self.controller?.createButtons()
+            
+            for button in buttons! {
+                self.myCamera.addChild(button)
+        }
     }
     
+    var buttonPressed: String = ""
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let touchedNode = atPoint((touches.first?.location(in: self))!)
-        self.controller!.pressed(buttonName: touchedNode.name!)
+        
+        for touch in touches {
+            let touchedNode = atPoint(touch.location(in: self))
+            self.controller!.pressed(buttonName: touchedNode.name!)
+            self.buttonPressed = touchedNode.name!
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.player!.stopMoving()
+//        self.player!.stop(actionKey: .)
+//        self.player!.removeAllActions()
+        
+        switch self.buttonPressed {
+        case "buttonLeft":
+            self.player?.stop(actionKey: .MOVE_LEFT)
+            self.player?.stop(actionKey: .ANIMATE_LEFT)
+            break
+        case "buttonRight":
+            self.player?.stop(actionKey: .MOVE_RIGHT)
+            self.player?.stop(actionKey: .ANIMATE_RIGHT)
+            break
+        case "buttonA":
+            
+            break
+        default:
+            print("No matching button!")
+        }
+        
+        self.buttonPressed = ""
+        self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
     }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         
-        self.myCamera.position.x = self.player!.position.x
     }
 }

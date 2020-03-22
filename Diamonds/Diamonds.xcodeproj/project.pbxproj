@@ -10,6 +10,9 @@
 		9606D2E124264F1800E0F63A /* moveLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9606D2E024264F1800E0F63A /* moveLeft.atlas */; };
 		9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9606D2E42426512E00E0F63A /* moveRight.atlas */; };
 		9634F59724278DDA0093B280 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9634F59624278DDA0093B280 /* Level1.sks */; };
+		9634F59F2427953F0093B280 /* LevelsTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9634F59E2427953F0093B280 /* LevelsTileSet.sks */; };
+		9634F5A224279FF50093B280 /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9634F5A124279FF50093B280 /* Level1.swift */; };
+		96CF92112427A24400699D9F /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CF92102427A24400699D9F /* Box.swift */; };
 		96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE23B24256C56001F05AA /* AppDelegate.swift */; };
 		96EEE23E24256C56001F05AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE23D24256C56001F05AA /* GameScene.sks */; };
 		96EEE24224256C56001F05AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE24124256C56001F05AA /* GameScene.swift */; };
@@ -19,7 +22,6 @@
 		96EEE24C24256C58001F05AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE24A24256C58001F05AA /* LaunchScreen.storyboard */; };
 		96EEE25724256C58001F05AA /* DiamondsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE25624256C58001F05AA /* DiamondsTests.swift */; };
 		96EEE26224256C58001F05AA /* DiamondsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE26124256C58001F05AA /* DiamondsUITests.swift */; };
-		96EEE27024257001001F05AA /* GroundTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE26F24257001001F05AA /* GroundTileSet.sks */; };
 		96EEE280242573C0001F05AA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE27F242573C0001F05AA /* Controller.swift */; };
 		96EEE28424257451001F05AA /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE28324257451001F05AA /* Actor.swift */; };
 		96EEE2862425745A001F05AA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE2852425745A001F05AA /* Command.swift */; };
@@ -49,6 +51,9 @@
 		9606D2E024264F1800E0F63A /* moveLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveLeft.atlas; sourceTree = "<group>"; };
 		9606D2E42426512E00E0F63A /* moveRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveRight.atlas; sourceTree = "<group>"; };
 		9634F59624278DDA0093B280 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
+		9634F59E2427953F0093B280 /* LevelsTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelsTileSet.sks; sourceTree = "<group>"; };
+		9634F5A124279FF50093B280 /* Level1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
+		96CF92102427A24400699D9F /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
 		96EEE23824256C56001F05AA /* Diamonds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diamonds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EEE23B24256C56001F05AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96EEE23D24256C56001F05AA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,7 +69,6 @@
 		96EEE25D24256C58001F05AA /* DiamondsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiamondsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EEE26124256C58001F05AA /* DiamondsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiamondsUITests.swift; sourceTree = "<group>"; };
 		96EEE26324256C58001F05AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96EEE26F24257001001F05AA /* GroundTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GroundTileSet.sks; sourceTree = "<group>"; };
 		96EEE27F242573C0001F05AA /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		96EEE28324257451001F05AA /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		96EEE2852425745A001F05AA /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -101,9 +105,19 @@
 		9634F59524278DBF0093B280 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				9634F59624278DDA0093B280 /* Level1.sks */,
+				9634F5A024279FC20093B280 /* Level1 */,
+				96CF92102427A24400699D9F /* Box.swift */,
 			);
 			path = Levels;
+			sourceTree = "<group>";
+		};
+		9634F5A024279FC20093B280 /* Level1 */ = {
+			isa = PBXGroup;
+			children = (
+				9634F59624278DDA0093B280 /* Level1.sks */,
+				9634F5A124279FF50093B280 /* Level1.swift */,
+			);
+			path = Level1;
 			sourceTree = "<group>";
 		};
 		96EEE22F24256C56001F05AA = {
@@ -129,9 +143,9 @@
 		96EEE23A24256C56001F05AA /* Diamonds */ = {
 			isa = PBXGroup;
 			children = (
-				9634F59524278DBF0093B280 /* Levels */,
 				9606D2E024264F1800E0F63A /* moveLeft.atlas */,
 				9606D2E42426512E00E0F63A /* moveRight.atlas */,
+				9634F59524278DBF0093B280 /* Levels */,
 				96EEE27E242573AC001F05AA /* Controller */,
 				96EEE23B24256C56001F05AA /* AppDelegate.swift */,
 				96EEE23D24256C56001F05AA /* GameScene.sks */,
@@ -142,7 +156,7 @@
 				96EEE24824256C58001F05AA /* Assets.xcassets */,
 				96EEE24A24256C58001F05AA /* LaunchScreen.storyboard */,
 				96EEE24D24256C58001F05AA /* Info.plist */,
-				96EEE26F24257001001F05AA /* GroundTileSet.sks */,
+				9634F59E2427953F0093B280 /* LevelsTileSet.sks */,
 			);
 			path = Diamonds;
 			sourceTree = "<group>";
@@ -303,7 +317,7 @@
 				9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */,
 				96EEE24924256C58001F05AA /* Assets.xcassets in Resources */,
 				96EEE24C24256C58001F05AA /* LaunchScreen.storyboard in Resources */,
-				96EEE27024257001001F05AA /* GroundTileSet.sks in Resources */,
+				9634F59F2427953F0093B280 /* LevelsTileSet.sks in Resources */,
 				9606D2E124264F1800E0F63A /* moveLeft.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,10 +343,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9634F5A224279FF50093B280 /* Level1.swift in Sources */,
 				96EEE24224256C56001F05AA /* GameScene.swift in Sources */,
 				96EEE24424256C56001F05AA /* GameViewController.swift in Sources */,
 				96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */,
 				96EEE288242575B0001F05AA /* CommandMove.swift in Sources */,
+				96CF92112427A24400699D9F /* Box.swift in Sources */,
 				96EEE280242573C0001F05AA /* Controller.swift in Sources */,
 				96EEE28424257451001F05AA /* Actor.swift in Sources */,
 				96EEE2862425745A001F05AA /* Command.swift in Sources */,
