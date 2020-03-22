@@ -13,6 +13,7 @@ class GameScene: SKScene {
     
     var player: Player?
     var controller: Controller?
+    var myCamera: SKCameraNode = SKCameraNode()
     
     override func didMove(to view: SKView) {
         self.player = self.childNode(withName: "Player") as? Player
@@ -26,6 +27,9 @@ class GameScene: SKScene {
 //            self.scene?.camera?.addChild(button)
             self.addChild(button)
         }
+        
+        self.myCamera = SKCameraNode()
+        self.camera = self.myCamera
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -33,7 +37,13 @@ class GameScene: SKScene {
         self.controller!.pressed(buttonName: touchedNode.name!)
     }
     
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.player!.stopMoving()
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        self.myCamera.position.x = self.player!.position.x
     }
 }
