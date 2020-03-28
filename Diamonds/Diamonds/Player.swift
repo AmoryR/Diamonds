@@ -25,17 +25,19 @@ class Player: SKSpriteNode, Actor {
     
     init(texture: SKTexture, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
+        
+        self.buildFrames()
+        self.buildPhysics()
+        
     }
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     
     // Because the player comes from GameScene
     required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
-        
-        self.buildFrames()
+        fatalError("init(coder:) has not been implemented")
+//        super.init(coder: aDecoder)
+//
+//        self.buildFrames()
+
     }
     
     func buildFrames() {
@@ -59,6 +61,25 @@ class Player: SKSpriteNode, Actor {
         }
         
         
+    }
+    
+    func buildPhysics() {
+        print("change physics body size")
+        
+        // Hack to get the physics body in the right position
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.30)
+        
+        // Maybe use a circle for the leg
+        
+        // Size based on texture
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 105, height: 150))
+        self.physicsBody?.affectedByGravity = true
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = true
+        
+        self.physicsBody?.categoryBitMask = 0x1 << 1
+        self.physicsBody?.collisionBitMask = 0x1 << 0
+        self.physicsBody?.contactTestBitMask = 0x1 << 0
     }
     
     func move(direction: Direction) {

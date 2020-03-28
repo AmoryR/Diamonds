@@ -91,24 +91,29 @@ class Controller {
         }
     }
     
-    func createButtons() -> [SKSpriteNode] {
+    func createButtons(frameSize: CGSize) -> [SKSpriteNode] {
+        let xOffset: CGFloat = 400
+        let yOffset: CGFloat = 200
         let aTexture = SKTexture(imageNamed: "a")
         let leftArrowTexture = SKTexture(imageNamed: "leftArrow")
         let rightArrowTexture = SKTexture(imageNamed: "rightArrow")
         
         let buttonA = SKSpriteNode(texture: aTexture)
         buttonA.name = "buttonA"
-        buttonA.position.x = 500
+        buttonA.position.x = frameSize.width / 2.0 - xOffset
+        buttonA.position.y = -yOffset
         buttonA.zPosition = 10
         
         let buttonLeft = SKSpriteNode(texture: leftArrowTexture)
         buttonLeft.name = "buttonLeft"
-        buttonLeft.position.x = -500
+        buttonLeft.position.x = -frameSize.width / 2.0 + xOffset
+        buttonLeft.position.y = -yOffset
         buttonLeft.zPosition = 10
         
         let buttonRight = SKSpriteNode(texture: rightArrowTexture)
         buttonRight.name = "buttonRight"
-        buttonRight.position.x = -400
+        buttonRight.position.x = -frameSize.width / 2.0 + xOffset + leftArrowTexture.size().width + 50
+        buttonRight.position.y = -yOffset
         buttonRight.zPosition = 10
         
         return [buttonA, buttonLeft, buttonRight]
