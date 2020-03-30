@@ -16,4 +16,5 @@ enum Direction {
 protocol Actor {
     func move(direction: Direction)
     func jump()
+    func climb()
 }

@@ -13,7 +13,7 @@ class Controller {
     enum Button {
         case LEFT
         case RIGHT
-        case JUMP
+        case A
     }
     
     private var actor: Actor
@@ -41,7 +41,7 @@ class Controller {
         case Button.RIGHT:
             self.commandes[1] = CommandMoveRight()
             break
-        case Button.JUMP:
+        case Button.A:
             self.commandes[2] = CommandJump()
             break
         }
@@ -55,7 +55,7 @@ class Controller {
         case Button.RIGHT:
             self.commandes[1] = command
             break
-        case Button.JUMP:
+        case Button.A:
             self.commandes[2] = command
             break
         }
@@ -69,7 +69,7 @@ class Controller {
         case Button.RIGHT:
             self.commandes[1].execute(actor: self.actor)
             break
-        case Button.JUMP:
+        case Button.A:
             self.commandes[2].execute(actor: self.actor)
             break
         }
@@ -84,7 +84,7 @@ class Controller {
             self.play(button: .RIGHT)
             break
         case "buttonA":
-            self.play(button: .JUMP)
+            self.play(button: .A)
             break
         default:
             print("No matching button!")
@@ -92,6 +92,8 @@ class Controller {
     }
     
     func createButtons(frameSize: CGSize) -> [SKSpriteNode] {
+        let buttonScale: CGFloat = 1.5
+        let buttonZPosition: CGFloat = 10
         let xOffset: CGFloat = 400
         let yOffset: CGFloat = 200
         let aTexture = SKTexture(imageNamed: "a")
@@ -102,19 +104,22 @@ class Controller {
         buttonA.name = "buttonA"
         buttonA.position.x = frameSize.width / 2.0 - xOffset
         buttonA.position.y = -yOffset
-        buttonA.zPosition = 10
+        buttonA.zPosition = buttonZPosition
+        buttonA.setScale(buttonScale)
         
         let buttonLeft = SKSpriteNode(texture: leftArrowTexture)
         buttonLeft.name = "buttonLeft"
         buttonLeft.position.x = -frameSize.width / 2.0 + xOffset
         buttonLeft.position.y = -yOffset
-        buttonLeft.zPosition = 10
+        buttonLeft.zPosition = buttonZPosition
+        buttonLeft.setScale(buttonScale)
         
         let buttonRight = SKSpriteNode(texture: rightArrowTexture)
         buttonRight.name = "buttonRight"
-        buttonRight.position.x = -frameSize.width / 2.0 + xOffset + leftArrowTexture.size().width + 50
+        buttonRight.position.x = -frameSize.width / 2.0 + xOffset + leftArrowTexture.size().width + 100
         buttonRight.position.y = -yOffset
-        buttonRight.zPosition = 10
+        buttonRight.zPosition = buttonZPosition
+        buttonRight.setScale(buttonScale)
         
         return [buttonA, buttonLeft, buttonRight]
     }

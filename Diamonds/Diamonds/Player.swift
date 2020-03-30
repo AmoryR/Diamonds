@@ -13,15 +13,29 @@ enum PlayerActionsKeys: String {
     case ANIMATE_LEFT = "animateLeft"
     case MOVE_RIGHT = "moveRight"
     case ANIMATE_RIGHT = "animateRIGHT"
+    case CLIMB = "climb"
+    case ANIMATE_CLIMB = "animateClimb"
+}
+
+enum PlayerState {
+    case NORMAL
+    case CLIMBING
 }
 
 class Player: SKSpriteNode, Actor {
     
     private var moveLeftFrames: [SKTexture] = []
     private var moveRightFrames: [SKTexture] = []
+    private var climbFrames: [SKTexture] = []
     
     private let moveRightAction = SKAction.moveBy(x: 30, y: 0, duration: 0.1)
     private let moveLeftAction = SKAction.moveBy(x: -30, y: 0, duration: 0.1)
+    private let climbAction = SKAction.moveBy(x: 0, y: 20, duration: 0.1)
+    
+    private(set) var state: PlayerState = .NORMAL
+    
+    var isJumping = false
+    private let jumpForce: CGFloat = 100 // 85
     
     init(texture: SKTexture, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
@@ -31,13 +45,8 @@ class Player: SKSpriteNode, Actor {
         
     }
     
-    // Because the player comes from GameScene
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-//        super.init(coder: aDecoder)
-//
-//        self.buildFrames()
-
     }
     
     func buildFrames() {
@@ -60,11 +69,17 @@ class Player: SKSpriteNode, Actor {
             self.moveRightFrames.append(moveRightAtlas.textureNamed(textureName))
         }
         
+        // Climb
+        let climbAtlas = SKTextureAtlas(named: "climb")
+        let numImageClimb = climbAtlas.textureNames.count
         
+        for i in 1...numImageClimb {
+            let textureName = "alienGreen_climb\(i)"
+            self.climbFrames.append(climbAtlas.textureNamed(textureName))
+        }
     }
     
     func buildPhysics() {
-        print("change physics body size")
         
         // Hack to get the physics body in the right position
         self.anchorPoint = CGPoint(x: 0.5, y: 0.30)
@@ -77,9 +92,11 @@ class Player: SKSpriteNode, Actor {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = true
         
-        self.physicsBody?.categoryBitMask = 0x1 << 1
+        self.physicsBody?.mass = 0.1
+        
+        self.physicsBody?.categoryBitMask = 0x1 << 2
         self.physicsBody?.collisionBitMask = 0x1 << 0
-        self.physicsBody?.contactTestBitMask = 0x1 << 0
+        self.physicsBody?.contactTestBitMask = (0x1 << 0) | (0x1 << 2) // Ground or ladder
     }
     
     func move(direction: Direction) {
@@ -102,11 +119,28 @@ class Player: SKSpriteNode, Actor {
     }
     
     func jump() {
-        print("Make a great jump")
-        let jumpUpAction = SKAction.moveBy(x: 0, y: 250, duration: 0.3)
-        let jumpDownAction = SKAction.moveBy(x: 0, y: -250, duration: 0.3)
-        let jumpSequence = SKAction.sequence([jumpUpAction, jumpDownAction])
-        self.run(jumpSequence)
+        if !self.isJumping {
+            self.isJumping = true
+            self.physicsBody?.velocity = CGVector(dx: 0, dy: 0);
+            self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: self.jumpForce));
+        }
+    }
+    
+    func landFromJump() {
+        self.isJumping = false
+    }
+    
+    func climb() {
+        // Move the player to the ladder center
+        // Run animation
+        self.run(SKAction.repeatForever(SKAction.animate(with: self.climbFrames, timePerFrame: 0.1)), withKey: PlayerActionsKeys.ANIMATE_CLIMB.rawValue)
+        // Run action
+        self.run(SKAction.repeatForever(self.climbAction), withKey: PlayerActionsKeys.CLIMB.rawValue)
+        
+    }
+    
+    func setState(state: PlayerState) {
+        self.state = state
     }
     
 

@@ -9,34 +9,37 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player?
     var controller: Controller?
     var myCamera: SKCameraNode = SKCameraNode()
+    var buttonsPressed: [String] = []
     
     override func didMove(to view: SKView) {
-//        self.player = self.childNode(withName: "Player") as? Player
+        
+        // Player
         let playerTexture = SKTexture(imageNamed: "alienGreen_front")
         self.player = Player(texture: playerTexture, color: .red, size: playerTexture.size())
-//        self.player?.position = CGPoint(x: -3860, y: 0)
-        self.player?.position.x = -1500
         self.addChild(self.player!)
         
+        // Camera
         self.myCamera = SKCameraNode()
         self.camera = self.myCamera
         
         self.player?.addChild(self.myCamera)
         
+        // Controller
         self.controller = Controller(actor: self.player!)
         let buttons = self.controller?.createButtons(frameSize: self.frame.size)
         
         for button in buttons! {
             self.myCamera.addChild(button)
         }
+        
+        self.physicsWorld.contactDelegate = self
+        
     }
-
-    var buttonsPressed: [String] = []
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -65,19 +68,51 @@ class GameScene: SKScene {
             self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
             break
         case "buttonA":
-
             self.buttonsPressed.remove(at: self.buttonsPressed.count - 1)
-            self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
+        
+            if self.player?.state == PlayerState.NORMAL {
+                self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
+            } else if self.player?.state == PlayerState.CLIMBING {
+                self.player?.stop(actionKey: .CLIMB)
+                self.player?.stop(actionKey: .ANIMATE_CLIMB)
+            }
+            
             break
         default:
             print("No matching button!")
-            self.player?.removeAllActions()
-            self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
         }
     }
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        
+        // First method called before each frame is rendered
     }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        // Contact with a ladder
+        if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {
+            print("contact with ladder")
+            
+            self.physicsWorld.gravity = .zero
+            self.player?.setState(state: .CLIMBING)
+            self.controller?.setCommand(button: .A, command: CommandClimb())
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        self.player?.landFromJump()
+        
+        // End contact with a ladder
+        if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {
+            print("End contact with ladder")
+            
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+            self.player?.stop(actionKey: .CLIMB)
+            self.player?.stop(actionKey: .ANIMATE_CLIMB)
+            self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
+            self.player?.setState(state: .NORMAL)
+            self.controller?.setCommand(button: .A, command: CommandJump())
+        }
+    }
+
 }
