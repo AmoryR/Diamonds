@@ -96,7 +96,7 @@ class Player: SKSpriteNode, Actor {
         
         self.physicsBody?.categoryBitMask = 0x1 << 2
         self.physicsBody?.collisionBitMask = 0x1 << 0
-        self.physicsBody?.contactTestBitMask = (0x1 << 0) | (0x1 << 2) // Ground or ladder
+        self.physicsBody?.contactTestBitMask = (0x1 << 0) | (0x1 << 2) | (0x1 << 3) // Ground or ladder or coin
     }
     
     func move(direction: Direction) {

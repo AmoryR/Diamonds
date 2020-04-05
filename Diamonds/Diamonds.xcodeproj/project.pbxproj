@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9606D2E124264F1800E0F63A /* moveLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9606D2E024264F1800E0F63A /* moveLeft.atlas */; };
 		9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9606D2E42426512E00E0F63A /* moveRight.atlas */; };
+		9610C3252438E9BA00A9083E /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C3242438E9BA00A9083E /* HUD.swift */; };
+		9610C3272438F2E900A9083E /* blueFlag.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9610C3262438F2E800A9083E /* blueFlag.atlas */; };
+		9610C3292438F30300A9083E /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C3282438F30300A9083E /* Flag.swift */; };
+		9610C32B2438F51C00A9083E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C32A2438F51C00A9083E /* Level.swift */; };
 		9631CB8F243258C300371E32 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9631CB8E243258C300371E32 /* Background.swift */; };
 		9631CB912432602800371E32 /* CommandClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9631CB902432602800371E32 /* CommandClimb.swift */; };
 		9631CB93243276A600371E32 /* climb.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9631CB92243276A600371E32 /* climb.atlas */; };
@@ -52,6 +56,10 @@
 /* Begin PBXFileReference section */
 		9606D2E024264F1800E0F63A /* moveLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveLeft.atlas; sourceTree = "<group>"; };
 		9606D2E42426512E00E0F63A /* moveRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveRight.atlas; sourceTree = "<group>"; };
+		9610C3242438E9BA00A9083E /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		9610C3262438F2E800A9083E /* blueFlag.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueFlag.atlas; sourceTree = "<group>"; };
+		9610C3282438F30300A9083E /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		9610C32A2438F51C00A9083E /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		9631CB8E243258C300371E32 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		9631CB902432602800371E32 /* CommandClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandClimb.swift; sourceTree = "<group>"; };
 		9631CB92243276A600371E32 /* climb.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = climb.atlas; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 		9634F59524278DBF0093B280 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				9610C32A2438F51C00A9083E /* Level.swift */,
 				9634F5A024279FC20093B280 /* Level1 */,
 			);
 			path = Levels;
@@ -148,6 +157,7 @@
 			children = (
 				9606D2E024264F1800E0F63A /* moveLeft.atlas */,
 				9606D2E42426512E00E0F63A /* moveRight.atlas */,
+				9610C3262438F2E800A9083E /* blueFlag.atlas */,
 				9631CB92243276A600371E32 /* climb.atlas */,
 				9634F59524278DBF0093B280 /* Levels */,
 				96EEE27E242573AC001F05AA /* Controller */,
@@ -162,6 +172,8 @@
 				96EEE24D24256C58001F05AA /* Info.plist */,
 				9634F59E2427953F0093B280 /* LevelsTileSet.sks */,
 				9631CB8E243258C300371E32 /* Background.swift */,
+				9610C3242438E9BA00A9083E /* HUD.swift */,
+				9610C3282438F30300A9083E /* Flag.swift */,
 			);
 			path = Diamonds;
 			sourceTree = "<group>";
@@ -324,6 +336,7 @@
 				9631CB93243276A600371E32 /* climb.atlas in Resources */,
 				96EEE24924256C58001F05AA /* Assets.xcassets in Resources */,
 				96EEE24C24256C58001F05AA /* LaunchScreen.storyboard in Resources */,
+				9610C3272438F2E900A9083E /* blueFlag.atlas in Resources */,
 				9634F59F2427953F0093B280 /* LevelsTileSet.sks in Resources */,
 				9606D2E124264F1800E0F63A /* moveLeft.atlas in Resources */,
 			);
@@ -351,12 +364,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9631CB8F243258C300371E32 /* Background.swift in Sources */,
+				9610C3292438F30300A9083E /* Flag.swift in Sources */,
 				9634F5A224279FF50093B280 /* Level1.swift in Sources */,
+				9610C32B2438F51C00A9083E /* Level.swift in Sources */,
 				96EEE24224256C56001F05AA /* GameScene.swift in Sources */,
 				96EEE24424256C56001F05AA /* GameViewController.swift in Sources */,
 				96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */,
 				96EEE288242575B0001F05AA /* CommandMove.swift in Sources */,
 				96EEE280242573C0001F05AA /* Controller.swift in Sources */,
+				9610C3252438E9BA00A9083E /* HUD.swift in Sources */,
 				96EEE28424257451001F05AA /* Actor.swift in Sources */,
 				96EEE2862425745A001F05AA /* Command.swift in Sources */,
 				96EEE28C24257788001F05AA /* Player.swift in Sources */,

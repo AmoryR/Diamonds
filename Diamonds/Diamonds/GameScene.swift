@@ -15,6 +15,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var controller: Controller?
     var myCamera: SKCameraNode = SKCameraNode()
     var buttonsPressed: [String] = []
+    var coinsLabel: SKLabelNode?
+    var coinsCollected: Int = 0
+    var diamondsCollected: Int = 0
     
     override func didMove(to view: SKView) {
         
@@ -36,6 +39,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for button in buttons! {
             self.myCamera.addChild(button)
         }
+        
+        // UI
+        self.coinsLabel = SKLabelNode(text: "\(self.coinsCollected)")
+        self.coinsLabel?.fontColor = .black
+        self.coinsLabel?.fontSize = 58
+        self.coinsLabel?.position = CGPoint(x: UIScreen.main.bounds.width, y: UIScreen.main.bounds.height)
+        self.coinsLabel?.zPosition = 100
+        self.myCamera.addChild(self.coinsLabel!)
         
         self.physicsWorld.contactDelegate = self
         
@@ -88,6 +99,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+        
+        // Contact with a diamond
+        if contact.bodyA.node?.name == "Diamond" || contact.bodyB.node?.name == "Diamond" {
+            
+            if contact.bodyA.node?.name == "Diamond" {
+                contact.bodyA.node?.removeFromParent()
+            }
+            else {
+                contact.bodyB.node?.removeFromParent()
+            }
+            self.diamondsCollected += 1
+        }
+        
+        // Contact with a coin
+        if contact.bodyA.node?.name == "Coin" || contact.bodyB.node?.name == "Coin" {
+            
+            if contact.bodyA.node?.name == "Coin" {
+                contact.bodyA.node?.removeFromParent()
+            }
+            else {
+                contact.bodyB.node?.removeFromParent()
+            }
+            self.coinsCollected += 1
+            self.coinsLabel?.text = "\(self.coinsCollected)"
+        }
         
         // Contact with a ladder
         if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {

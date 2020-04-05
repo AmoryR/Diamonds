@@ -18,6 +18,7 @@ class Level1: GameScene {
         
         // Player
         self.player?.position = CGPoint(x: -3860, y: 0) // Level 1 start position
+        
 //        self.player?.position = .zero // Develop ladder
         
         // Background
