@@ -13,12 +13,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player?
     var controller: Controller?
+    var hud: HUD?
     var myCamera: SKCameraNode = SKCameraNode()
     var buttonsPressed: [String] = []
-    var coinsLabel: SKLabelNode?
-    var coinsCollected: Int = 0
-    var diamondsCollected: Int = 0
-    
+ 
     override func didMove(to view: SKView) {
         
         // Player
@@ -41,12 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // UI
-        self.coinsLabel = SKLabelNode(text: "\(self.coinsCollected)")
-        self.coinsLabel?.fontColor = .black
-        self.coinsLabel?.fontSize = 58
-        self.coinsLabel?.position = CGPoint(x: UIScreen.main.bounds.width, y: UIScreen.main.bounds.height)
-        self.coinsLabel?.zPosition = 100
-        self.myCamera.addChild(self.coinsLabel!)
+        self.hud = HUD(parent: self.myCamera)
         
         self.physicsWorld.contactDelegate = self
         
@@ -100,6 +93,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         
+        // Flag
+        if contact.bodyA.node?.name == "Flag" || contact.bodyB.node?.name == "Flag" {
+            print("Flag")
+        }
+        
         // Contact with a diamond
         if contact.bodyA.node?.name == "Diamond" || contact.bodyB.node?.name == "Diamond" {
             
@@ -109,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else {
                 contact.bodyB.node?.removeFromParent()
             }
-            self.diamondsCollected += 1
+            self.hud?.collectDiamond()
         }
         
         // Contact with a coin
@@ -121,9 +119,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             else {
                 contact.bodyB.node?.removeFromParent()
             }
-            self.coinsCollected += 1
-            self.coinsLabel?.text = "\(self.coinsCollected)"
+            self.hud?.collectCoin()
         }
+        
+        // Coin box
+        if contact.bodyA.node?.name == "CoinBox" || contact.bodyB.node?.name == "CoinBox" {
+            
+            let coinBox = contact.bodyA.node as? CoinBox
+            if coinBox!.hit() {
+                self.hud?.collectCoin()
+            }
+        }
+
         
         // Contact with a ladder
         if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {
