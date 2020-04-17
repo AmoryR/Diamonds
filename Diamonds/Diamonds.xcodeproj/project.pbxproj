@@ -20,6 +20,9 @@
 		9634F59F2427953F0093B280 /* LevelsTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9634F59E2427953F0093B280 /* LevelsTileSet.sks */; };
 		9634F5A224279FF50093B280 /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9634F5A124279FF50093B280 /* Level1.swift */; };
 		964AD1362449F5BD00656CCB /* Map.sks in Resources */ = {isa = PBXBuildFile; fileRef = 964AD1352449F5BD00656CCB /* Map.sks */; };
+		964AD138244A0B3000656CCB /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD137244A0B3000656CCB /* Map.swift */; };
+		964AD13A244A0DC400656CCB /* MapPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD139244A0DC300656CCB /* MapPlayer.swift */; };
+		964AD13C244A0F2700656CCB /* CommandSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD13B244A0F2700656CCB /* CommandSelect.swift */; };
 		96507197243A18F800543253 /* CoinBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96507196243A18F800543253 /* CoinBox.swift */; };
 		96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE23B24256C56001F05AA /* AppDelegate.swift */; };
 		96EEE23E24256C56001F05AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE23D24256C56001F05AA /* GameScene.sks */; };
@@ -69,6 +72,9 @@
 		9634F59E2427953F0093B280 /* LevelsTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelsTileSet.sks; sourceTree = "<group>"; };
 		9634F5A124279FF50093B280 /* Level1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
 		964AD1352449F5BD00656CCB /* Map.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Map.sks; sourceTree = "<group>"; };
+		964AD137244A0B3000656CCB /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		964AD139244A0DC300656CCB /* MapPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlayer.swift; sourceTree = "<group>"; };
+		964AD13B244A0F2700656CCB /* CommandSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelect.swift; sourceTree = "<group>"; };
 		96507196243A18F800543253 /* CoinBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinBox.swift; sourceTree = "<group>"; };
 		96EEE23824256C56001F05AA /* Diamonds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diamonds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EEE23B24256C56001F05AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				964AD1352449F5BD00656CCB /* Map.sks */,
+				964AD137244A0B3000656CCB /* Map.swift */,
+				964AD139244A0DC300656CCB /* MapPlayer.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -227,6 +235,7 @@
 				96EEE287242575B0001F05AA /* CommandMove.swift */,
 				96EEE289242575BD001F05AA /* CommandJump.swift */,
 				9631CB902432602800371E32 /* CommandClimb.swift */,
+				964AD13B244A0F2700656CCB /* CommandSelect.swift */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -382,6 +391,8 @@
 				9610C3292438F30300A9083E /* Flag.swift in Sources */,
 				9634F5A224279FF50093B280 /* Level1.swift in Sources */,
 				9610C32B2438F51C00A9083E /* Level.swift in Sources */,
+				964AD138244A0B3000656CCB /* Map.swift in Sources */,
+				964AD13C244A0F2700656CCB /* CommandSelect.swift in Sources */,
 				96EEE24224256C56001F05AA /* GameScene.swift in Sources */,
 				96EEE24424256C56001F05AA /* GameViewController.swift in Sources */,
 				96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */,
@@ -392,6 +403,7 @@
 				96EEE28424257451001F05AA /* Actor.swift in Sources */,
 				96EEE2862425745A001F05AA /* Command.swift in Sources */,
 				96EEE28C24257788001F05AA /* Player.swift in Sources */,
+				964AD13A244A0DC400656CCB /* MapPlayer.swift in Sources */,
 				96EEE28A242575BD001F05AA /* CommandJump.swift in Sources */,
 				9631CB912432602800371E32 /* CommandClimb.swift in Sources */,
 			);

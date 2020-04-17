@@ -139,6 +139,8 @@ class Player: SKSpriteNode, Actor {
         
     }
     
+    func select() {}
+    
     func setState(state: PlayerState) {
         self.state = state
     }

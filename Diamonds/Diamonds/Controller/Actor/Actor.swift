@@ -17,4 +17,5 @@ protocol Actor {
     func move(direction: Direction)
     func jump()
     func climb()
+    func select()
 }
