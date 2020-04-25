@@ -26,6 +26,7 @@ class Map: SKScene {
         
         // Player
         self.player = self.childNode(withName: "Player") as? MapPlayer
+        self.player.parentMap = self
         
         // Camera
         self.myCamera = SKCameraNode()
@@ -53,6 +54,34 @@ class Map: SKScene {
         self.level3Node = self.childNode(withName: "Level3Node") as? SKSpriteNode
         self.level4Node = self.childNode(withName: "Level4Node") as? SKSpriteNode
         self.level5Node = self.childNode(withName: "Level5Node") as? SKSpriteNode
+        
+        self.player.levelsPosition.append(self.player.position)
+        self.player.levelsPosition.append(self.level1Node.position)
+        self.player.levelsPosition.append(self.level2Node.position)
+        self.player.levelsPosition.append(self.level3Node.position)
+        self.player.levelsPosition.append(self.level4Node.position)
+        self.player.levelsPosition.append(self.level5Node.position)
+    }
+    
+    func presentScene(index: Int) {
+        
+        if let view = self.view {
+            // Load the SKScene from 'GameScene.sks' or 'Level1.sks'
+            if let scene = SKScene(fileNamed: "Level\(index)") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+            view.showsPhysics = true
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
