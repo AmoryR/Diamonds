@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9606D2E124264F1800E0F63A /* moveLeft.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9606D2E024264F1800E0F63A /* moveLeft.atlas */; };
 		9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9606D2E42426512E00E0F63A /* moveRight.atlas */; };
+		960ECA032466F25F00606F04 /* Dev.sks in Resources */ = {isa = PBXBuildFile; fileRef = 960ECA022466F25F00606F04 /* Dev.sks */; };
+		960ECA052466F28500606F04 /* Dev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960ECA042466F28500606F04 /* Dev.swift */; };
 		9610C3252438E9BA00A9083E /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C3242438E9BA00A9083E /* HUD.swift */; };
 		9610C3272438F2E900A9083E /* blueFlag.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9610C3262438F2E800A9083E /* blueFlag.atlas */; };
 		9610C3292438F30300A9083E /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C3282438F30300A9083E /* Flag.swift */; };
@@ -69,6 +71,8 @@
 /* Begin PBXFileReference section */
 		9606D2E024264F1800E0F63A /* moveLeft.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveLeft.atlas; sourceTree = "<group>"; };
 		9606D2E42426512E00E0F63A /* moveRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = moveRight.atlas; sourceTree = "<group>"; };
+		960ECA022466F25F00606F04 /* Dev.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dev.sks; sourceTree = "<group>"; };
+		960ECA042466F28500606F04 /* Dev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dev.swift; sourceTree = "<group>"; };
 		9610C3242438E9BA00A9083E /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		9610C3262438F2E800A9083E /* blueFlag.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = blueFlag.atlas; sourceTree = "<group>"; };
 		9610C3282438F30300A9083E /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
@@ -140,9 +144,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960ECA012466F23A00606F04 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				960ECA022466F25F00606F04 /* Dev.sks */,
+				960ECA042466F28500606F04 /* Dev.swift */,
+			);
+			path = Dev;
+			sourceTree = "<group>";
+		};
 		9634F59524278DBF0093B280 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				960ECA012466F23A00606F04 /* Dev */,
 				9634F5A024279FC20093B280 /* Level1 */,
 				96F9662624542A16007BA191 /* Level2 */,
 				96F9662724542A21007BA191 /* Level3 */,
@@ -271,8 +285,8 @@
 		96F9662624542A16007BA191 /* Level2 */ = {
 			isa = PBXGroup;
 			children = (
-				96F9662A24542A66007BA191 /* Level2.swift */,
 				96F9663224542A90007BA191 /* Level2.sks */,
+				96F9662A24542A66007BA191 /* Level2.swift */,
 			);
 			path = Level2;
 			sourceTree = "<group>";
@@ -280,8 +294,8 @@
 		96F9662724542A21007BA191 /* Level3 */ = {
 			isa = PBXGroup;
 			children = (
-				96F9662C24542A6D007BA191 /* Level3.swift */,
 				96F9663424542A9B007BA191 /* Level3.sks */,
+				96F9662C24542A6D007BA191 /* Level3.swift */,
 			);
 			path = Level3;
 			sourceTree = "<group>";
@@ -289,8 +303,8 @@
 		96F9662824542A28007BA191 /* Level4 */ = {
 			isa = PBXGroup;
 			children = (
-				96F9662E24542A77007BA191 /* Level4.swift */,
 				96F9663624542AA3007BA191 /* Level4.sks */,
+				96F9662E24542A77007BA191 /* Level4.swift */,
 			);
 			path = Level4;
 			sourceTree = "<group>";
@@ -298,8 +312,8 @@
 		96F9662924542A30007BA191 /* Level5 */ = {
 			isa = PBXGroup;
 			children = (
-				96F9663024542A81007BA191 /* Level5.swift */,
 				96F9663824542AAB007BA191 /* Level5.sks */,
+				96F9663024542A81007BA191 /* Level5.swift */,
 			);
 			path = Level5;
 			sourceTree = "<group>";
@@ -413,6 +427,7 @@
 				9634F59724278DDA0093B280 /* Level1.sks in Resources */,
 				96F9663724542AA3007BA191 /* Level4.sks in Resources */,
 				96F9663924542AAB007BA191 /* Level5.sks in Resources */,
+				960ECA032466F25F00606F04 /* Dev.sks in Resources */,
 				964AD1362449F5BD00656CCB /* Map.sks in Resources */,
 				9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */,
 				9631CB93243276A600371E32 /* climb.atlas in Resources */,
@@ -458,6 +473,7 @@
 				96EEE24224256C56001F05AA /* GameScene.swift in Sources */,
 				96EEE24424256C56001F05AA /* GameViewController.swift in Sources */,
 				96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */,
+				960ECA052466F28500606F04 /* Dev.swift in Sources */,
 				96EEE288242575B0001F05AA /* CommandMove.swift in Sources */,
 				96F9663124542A81007BA191 /* Level5.swift in Sources */,
 				96EEE280242573C0001F05AA /* Controller.swift in Sources */,
