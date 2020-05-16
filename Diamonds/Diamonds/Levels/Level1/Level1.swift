@@ -8,7 +8,9 @@
 
 import SpriteKit
 
-class Level1: GameScene {
+class Level1: GameScene, Level {
+    
+    
     
     private var background: Background?
     private var isBackgroundMoving = false
@@ -17,13 +19,28 @@ class Level1: GameScene {
         super.didMove(to: view)
         
         // Player
-        self.player?.position = CGPoint(x: -3860, y: 0) // Level 1 start position
         
-//        self.player?.position = .zero // Develop ladder
+        self.setPlayerStartingPosition()
+        
         
         // Background
         self.backgroundColor = UIColor(red: 208/255, green: 244/255, blue: 247/255, alpha: 1.0)
         self.background = Background(parent: self, imageNamed: "colored_land")
+    }
+    
+    func setPlayerStartingPosition() {
+        guard let startPosition = self.childNode(withName: "StartPosition") as? SKSpriteNode else {
+            fatalError("No Start Position")
+        }
+        self.player?.position = startPosition.position
+    }
+    
+    func setBackground() {
+        
+    }
+    
+    func setMapPhysics() {
+        
     }
     
     override func update(_ currentTime: TimeInterval) {

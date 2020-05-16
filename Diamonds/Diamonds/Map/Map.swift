@@ -84,12 +84,21 @@ class Map: SKScene {
         
     }
     
+    func goHome() {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "HomeScreen")
+//        vc.view.frame = rootViewController.view.frame
+//        vc.view.layoutIfNeeded()
+//        self.view?.window?.rootViewController?.performSegue(withIdentifier: "HomeScreenSegue", sender: GameViewController())
+//        self.view?.window?.rootViewController?.present(HomeScreenViewController(), animated: false, completion: nil)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        for touch in touches {
-            let touchedNode = atPoint(touch.location(in: self))
-            self.controller.pressed(buttonName: touchedNode.name!)
-        }
+        self.goHome()
+//        for touch in touches {
+//            let touchedNode = atPoint(touch.location(in: self))
+//            self.controller.pressed(buttonName: touchedNode.name!)
+//        }
     }
     
 }

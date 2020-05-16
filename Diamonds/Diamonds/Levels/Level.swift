@@ -9,4 +9,5 @@
 protocol Level {
     func setPlayerStartingPosition()
     func setBackground()
+    func setMapPhysics()
 }

@@ -95,7 +95,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Flag
         if contact.bodyA.node?.name == "Flag" || contact.bodyB.node?.name == "Flag" {
-            print("Flag")
+            
+            // 1. Show coins and diamonds collected
+            // 2. Button to go back to map
+            
+            self.goToMap()
+            return
         }
         
         // Contact with a diamond
@@ -191,5 +196,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    func goToMap() {
+        if let view = self.view {
+            // Load the SKScene from 'Map.sks'
+            if let scene = SKScene(fileNamed: "Map") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+            view.showsPhysics = true
+        }
+    }
+
 
 }
