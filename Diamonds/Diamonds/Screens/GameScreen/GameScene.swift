@@ -96,9 +96,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Flag
         if contact.bodyA.node?.name == "Flag" || contact.bodyB.node?.name == "Flag" {
             
+            // Unlock next level
             // 1. Show coins and diamonds collected
             // 2. Button to go back to map
-            
+//            Map.currentLevelDone()
             self.goToMap()
             return
         }
@@ -203,6 +204,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if let scene = SKScene(fileNamed: "Map") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
+
+                if scene.userData == nil {
+                    scene.userData = NSMutableDictionary(capacity: 1)
+                }
+                scene.userData?.setValue("Done", forKey: "Level\(Map.currentLevel)")
                 
                 // Present the scene
                 view.presentScene(scene)

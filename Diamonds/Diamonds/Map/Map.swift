@@ -21,6 +21,17 @@ class Map: SKScene {
     var controller: Controller!
     var myCamera: SKCameraNode = SKCameraNode()
     
+    static var currentLevel = 0
+    static var isLevelLocked: [Bool] = [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true
+    ]
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         
@@ -35,6 +46,7 @@ class Map: SKScene {
         
         // Get levels node
         self.levelsNode()
+        self.player.positionAtCurrentLevel()
         
         // Controller
         self.controller = Controller(actor: self.player)
@@ -45,6 +57,20 @@ class Map: SKScene {
         }
         
         self.controller.setCommand(button: .A, command: CommandSelect())
+        
+        if let isDone = self.userData?.value(forKey: "Level\(Map.currentLevel)") as? String {
+            if isDone == "Done" {
+                
+                for i in 1...Map.currentLevel {
+                    if let blockNode = self.childNode(withName: "BlockLevel\(i)") {
+                        blockNode.removeFromParent()
+                    }
+                }
+                
+                
+                Map.isLevelLocked[Map.currentLevel + 1] = false
+            }
+        }
         
     }
     
@@ -84,6 +110,10 @@ class Map: SKScene {
         
     }
     
+//    static func currentLevelDone() {
+//        Map.isLevelLocked[Map.currentLevel + 1] = false
+//    }
+    
     func goHome() {
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "HomeScreen")
@@ -94,11 +124,11 @@ class Map: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.goHome()
-//        for touch in touches {
-//            let touchedNode = atPoint(touch.location(in: self))
-//            self.controller.pressed(buttonName: touchedNode.name!)
-//        }
+//        self.goHome()
+        for touch in touches {
+            let touchedNode = atPoint(touch.location(in: self))
+            self.controller.pressed(buttonName: touchedNode.name!)
+        }
     }
     
 }

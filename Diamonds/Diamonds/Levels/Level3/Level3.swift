@@ -22,12 +22,15 @@ class Level3: GameScene, Level {
     }
 
     func setPlayerStartingPosition() {
-        self.player?.position = CGPoint(x: -3860, y: -240) // Level 2 start position
+        guard let startPosition = self.childNode(withName: "StartPosition") as? SKSpriteNode else {
+            fatalError("No Start Position")
+        }
+        self.player?.position = startPosition.position
     }
     
     func setBackground() {
         self.backgroundColor = UIColor(red: 208/255, green: 244/255, blue: 247/255, alpha: 1.0)
-        self.background = Background(parent: self, imageNamed: "colored_land")
+        self.background = Background(parent: self, imageNamed: "colored_shroom")
     }
     
     func setMapPhysics() {

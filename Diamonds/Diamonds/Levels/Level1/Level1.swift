@@ -43,23 +43,23 @@ class Level1: GameScene, Level {
         
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        super.update(currentTime)
-        
-        // Parallax effect
-        if self.player?.action(forKey: PlayerActionsKeys.MOVE_LEFT.rawValue) != nil && self.isBackgroundMoving == false {
-            self.background!.move(direction: .RIGHT)
-            self.isBackgroundMoving = true
-            
-        } else if self.player?.action(forKey: PlayerActionsKeys.MOVE_RIGHT.rawValue) != nil && self.isBackgroundMoving == false {
-            self.background!.move(direction: .LEFT)
-            self.isBackgroundMoving = true
-            
-        } else if self.player?.action(forKey: PlayerActionsKeys.MOVE_LEFT.rawValue) == nil && self.player?.action(forKey: PlayerActionsKeys.MOVE_RIGHT.rawValue) == nil && self.isBackgroundMoving == true {
-            self.background!.stop()
-            self.isBackgroundMoving = false
-            
-        }
-    }
+//    override func update(_ currentTime: TimeInterval) {
+//        super.update(currentTime)
+//
+//        // Parallax effect
+//        if self.player?.action(forKey: PlayerActionsKeys.MOVE_LEFT.rawValue) != nil && self.isBackgroundMoving == false {
+//            self.background!.move(direction: .RIGHT)
+//            self.isBackgroundMoving = true
+//
+//        } else if self.player?.action(forKey: PlayerActionsKeys.MOVE_RIGHT.rawValue) != nil && self.isBackgroundMoving == false {
+//            self.background!.move(direction: .LEFT)
+//            self.isBackgroundMoving = true
+//
+//        } else if self.player?.action(forKey: PlayerActionsKeys.MOVE_LEFT.rawValue) == nil && self.player?.action(forKey: PlayerActionsKeys.MOVE_RIGHT.rawValue) == nil && self.isBackgroundMoving == true {
+//            self.background!.stop()
+//            self.isBackgroundMoving = false
+//
+//        }
+//    }
     
 }

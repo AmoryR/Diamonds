@@ -24,17 +24,19 @@ class MapPlayer: SKSpriteNode, Actor {
     }
     
     private func nextLevel() {
-        self.currentLevel += 1
+//        self.currentLevel += 1
+        Map.currentLevel += 1
     }
     
     private func previousLevel() {
-        if self.currentLevel > 0 {
-            self.currentLevel -= 1
+        if Map.currentLevel > 0 {
+//            self.currentLevel -= 1
+            Map.currentLevel -= 1
         }
     }
     
     private func moveToCurrentLevel() {
-        if self.currentLevel >= self.levelsPosition.count {
+        if Map.currentLevel >= self.levelsPosition.count {
             return
         }
         
@@ -44,23 +46,23 @@ class MapPlayer: SKSpriteNode, Actor {
     private func getMoveAction() -> SKAction {
         
         // Forward
-        if self.currentLevel - self.previousLevelIndex > 0 {
+        if Map.currentLevel - self.previousLevelIndex > 0 {
             
-            switch self.currentLevel {
+            switch Map.currentLevel {
             case 0, 1, 2, 5:
                 // Compute duration
-                return SKAction.move(to: self.levelsPosition[self.currentLevel], duration: 1)
+                return SKAction.move(to: self.levelsPosition[Map.currentLevel], duration: 1)
             case 3:
                 // Compute duration
                 return SKAction.sequence([
-                    SKAction.move(to: CGPoint(x: self.levelsPosition[self.currentLevel].x, y: self.position.y), duration: 0.5),
-                    SKAction.move(to: self.levelsPosition[self.currentLevel], duration: 0.5)
+                    SKAction.move(to: CGPoint(x: self.levelsPosition[Map.currentLevel].x, y: self.position.y), duration: 0.5),
+                    SKAction.move(to: self.levelsPosition[Map.currentLevel], duration: 0.5)
                 ])
             case 4:
                 // Compute duration
                 return SKAction.sequence([
-                    SKAction.move(to: CGPoint(x: self.position.x, y: self.levelsPosition[self.currentLevel].y), duration: 0.5),
-                    SKAction.move(to: self.levelsPosition[self.currentLevel], duration: 0.5)
+                    SKAction.move(to: CGPoint(x: self.position.x, y: self.levelsPosition[Map.currentLevel].y), duration: 0.5),
+                    SKAction.move(to: self.levelsPosition[Map.currentLevel], duration: 0.5)
                 ])
             default:
                 return SKAction.move(to: self.position, duration: 0)
@@ -69,21 +71,21 @@ class MapPlayer: SKSpriteNode, Actor {
         // Backward
         } else {
             
-            switch self.currentLevel {
+            switch Map.currentLevel {
             case 0, 1, 4, 5:
                 // Compute duration
-                return SKAction.move(to: self.levelsPosition[self.currentLevel], duration: 1)
+                return SKAction.move(to: self.levelsPosition[Map.currentLevel], duration: 1)
             case 3:
                 // Compute duration
                 return SKAction.sequence([
-                    SKAction.move(to: CGPoint(x: self.levelsPosition[self.currentLevel].x, y: self.position.y), duration: 0.5),
-                    SKAction.move(to: self.levelsPosition[self.currentLevel], duration: 0.5)
+                    SKAction.move(to: CGPoint(x: self.levelsPosition[Map.currentLevel].x, y: self.position.y), duration: 0.5),
+                    SKAction.move(to: self.levelsPosition[Map.currentLevel], duration: 0.5)
                 ])
             case 2:
                 // Compute duration
                 return SKAction.sequence([
-                    SKAction.move(to: CGPoint(x: self.position.x, y: self.levelsPosition[self.currentLevel].y), duration: 0.5),
-                    SKAction.move(to: self.levelsPosition[self.currentLevel], duration: 0.5)
+                    SKAction.move(to: CGPoint(x: self.position.x, y: self.levelsPosition[Map.currentLevel].y), duration: 0.5),
+                    SKAction.move(to: self.levelsPosition[Map.currentLevel], duration: 0.5)
                 ])
             default:
                 return SKAction.move(to: self.position, duration: 0)
@@ -94,8 +96,41 @@ class MapPlayer: SKSpriteNode, Actor {
     }
     
     func move(direction: Direction) {
-        self.previousLevelIndex = self.currentLevel
         
+        self.previousLevelIndex = Map.currentLevel
+        
+        // Assert
+        switch direction {
+        case .LEFT:
+            var nextLevel: Int = 0
+            if (Map.currentLevel > 0) {
+                nextLevel = Map.currentLevel - 1
+            } else {
+                nextLevel = Map.currentLevel
+            }
+            
+            let isLocked = Map.isLevelLocked[nextLevel]
+            
+            if isLocked {
+                print("lock")
+                return
+            }
+            
+            break
+        case .RIGHT:
+            let nextLevel: Int = Map.currentLevel + 1
+            
+            let isLocked = Map.isLevelLocked[nextLevel]
+            
+            if isLocked {
+                print("lock")
+                return
+            }
+            
+            break
+        }
+        
+        // Move
         switch direction {
         case .LEFT:
             self.previousLevel()
@@ -109,10 +144,14 @@ class MapPlayer: SKSpriteNode, Actor {
         
     }
     
+    func positionAtCurrentLevel() {
+        self.position = self.levelsPosition[Map.currentLevel]
+    }
+    
     func select() {
         
-        if (self.currentLevel > 0) {
-            self.parentMap?.presentScene(index: self.currentLevel)
+        if (Map.currentLevel > 0) {
+            self.parentMap?.presentScene(index: Map.currentLevel)
         }
         
     }

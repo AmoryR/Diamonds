@@ -30,7 +30,7 @@ class Level2: GameScene, Level {
     
     func setBackground() {
         self.backgroundColor = UIColor(red: 208/255, green: 244/255, blue: 247/255, alpha: 1.0)
-        self.background = Background(parent: self, imageNamed: "colored_land")
+        self.background = Background(parent: self, imageNamed: "blue_land")
     }
     
     func setMapPhysics() {
