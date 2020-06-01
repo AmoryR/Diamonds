@@ -95,74 +95,86 @@ class MapPlayer: SKSpriteNode, Actor {
         
     }
     
-    func move(direction: Direction) {
-        
-        self.previousLevelIndex = Map.currentLevel
-        
-        // Assert
-        switch direction {
-        case .LEFT:
-            var nextLevel: Int = 0
-            if (Map.currentLevel > 0) {
-                nextLevel = Map.currentLevel - 1
-            } else {
-                nextLevel = Map.currentLevel
-            }
-            
-            let isLocked = Map.isLevelLocked[nextLevel]
-            
-            if isLocked {
-                print("lock")
-                return
-            }
-            
-            break
-        case .RIGHT:
-            let nextLevel: Int = Map.currentLevel + 1
-            
-            let isLocked = Map.isLevelLocked[nextLevel]
-            
-            if isLocked {
-                print("lock")
-                return
-            }
-            
-            break
-        }
-        
-        // Move
-        switch direction {
-        case .LEFT:
-            self.previousLevel()
-            break
-        case .RIGHT:
-            self.nextLevel()
-            break
-        }
-        
-        self.moveToCurrentLevel()
-        
+    func commandRightCallback() {
+        print("Command right callback")
     }
+    
+    func commandLeftCallback() {
+        print("Command left callback")
+    }
+    
+    func commandACallback() {
+        print("Command A callback")
+    }
+    
+//    func move(direction: Direction) {
+//
+//        self.previousLevelIndex = Map.currentLevel
+//
+//        // Assert
+//        switch direction {
+//        case .LEFT:
+//            var nextLevel: Int = 0
+//            if (Map.currentLevel > 0) {
+//                nextLevel = Map.currentLevel - 1
+//            } else {
+//                nextLevel = Map.currentLevel
+//            }
+//
+//            let isLocked = Map.isLevelLocked[nextLevel]
+//
+//            if isLocked {
+//                print("lock")
+//                return
+//            }
+//
+//            break
+//        case .RIGHT:
+//            let nextLevel: Int = Map.currentLevel + 1
+//
+//            let isLocked = Map.isLevelLocked[nextLevel]
+//
+//            if isLocked {
+//                print("lock")
+//                return
+//            }
+//
+//            break
+//        }
+//
+//        // Move
+//        switch direction {
+//        case .LEFT:
+//            self.previousLevel()
+//            break
+//        case .RIGHT:
+//            self.nextLevel()
+//            break
+//        }
+//
+//        self.moveToCurrentLevel()
+//
+//    }
     
     func positionAtCurrentLevel() {
         self.position = self.levelsPosition[Map.currentLevel]
     }
     
-    func select() {
-        
-        if (Map.currentLevel > 0) {
-            self.parentMap?.presentScene(index: Map.currentLevel)
-        }
-        
-    }
-    
-    func jump() {
-        fatalError("Jump from Map Player should not be called")
-    }
-    
-    func climb() {
-        fatalError("Climb from Map Player should not be called")
-    }
+//    func select() {
+//
+//        if (Map.currentLevel > 0) {
+//            self.parentMap?.presentScene(index: Map.currentLevel)
+//        }
+//
+//    }
+//
+//    func jump() {
+//        fatalError("Jump from Map Player should not be called")
+//    }
+//
+//    func climb() {
+//        fatalError("Climb from Map Player should not be called")
+//    }
 
     
 }

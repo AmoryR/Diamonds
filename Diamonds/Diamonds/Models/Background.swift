@@ -30,18 +30,18 @@ class Background {
         parent.addChild(self.backgrounds)
     }
     
-    func move(direction: Direction) {
-        switch direction {
-        case .LEFT:
-            self.backgrounds.run(SKAction.repeatForever(self.moveLeftAction))
-            
-            break
-        case .RIGHT:
-            self.backgrounds.run(SKAction.repeatForever(self.moveRightAction))
-            
-            break
-        }
-    }
+//    func move(direction: Direction) {
+//        switch direction {
+//        case .LEFT:
+//            self.backgrounds.run(SKAction.repeatForever(self.moveLeftAction))
+//            
+//            break
+//        case .RIGHT:
+//            self.backgrounds.run(SKAction.repeatForever(self.moveRightAction))
+//            
+//            break
+//        }
+//    }
     
     func stop() {
         self.backgrounds.removeAllActions()

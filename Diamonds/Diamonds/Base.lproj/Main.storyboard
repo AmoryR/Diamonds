@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T0k-19-3lH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,56 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home Screen View Controller-->
-        <scene sceneID="KSf-nO-wOb">
-            <objects>
-                <viewController modalPresentationStyle="fullScreen" id="T0k-19-3lH" customClass="HomeScreenViewController" customModule="Diamonds" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YaT-Wu-7EQ">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colored_land" translatesAutoresizingMaskIntoConstraints="NO" id="q7d-0l-FD1">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="414"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nou-Wg-PCB">
-                                <rect key="frame" x="383" y="256" width="130" height="37"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="130" id="71i-nr-Fgc"/>
-                                    <constraint firstAttribute="height" constant="37" id="VEw-MD-nGS"/>
-                                </constraints>
-                                <state key="normal" title="Play">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="BV1-FR-VrT" kind="show" animates="NO" id="hHG-LN-Ef0"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diamonds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4v-1D-5ko">
-                                <rect key="frame" x="367.5" y="50" width="161" height="44.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="q7d-0l-FD1" firstAttribute="leading" secondItem="YaT-Wu-7EQ" secondAttribute="leadingMargin" constant="-60" id="FYQ-id-AWQ"/>
-                            <constraint firstItem="nou-Wg-PCB" firstAttribute="centerX" secondItem="YaT-Wu-7EQ" secondAttribute="centerX" id="N9h-5b-OrI"/>
-                            <constraint firstItem="q7d-0l-FD1" firstAttribute="centerY" secondItem="YaT-Wu-7EQ" secondAttribute="centerY" id="THu-R5-t50"/>
-                            <constraint firstItem="q7d-0l-FD1" firstAttribute="top" secondItem="qpo-L2-Uwo" secondAttribute="top" id="XpU-zH-Vd6"/>
-                            <constraint firstItem="S4v-1D-5ko" firstAttribute="centerX" secondItem="YaT-Wu-7EQ" secondAttribute="centerX" id="qEc-Oj-8Ky"/>
-                            <constraint firstItem="qpo-L2-Uwo" firstAttribute="bottom" secondItem="nou-Wg-PCB" secondAttribute="bottom" constant="100" id="sGs-aP-Ulr"/>
-                            <constraint firstItem="S4v-1D-5ko" firstAttribute="top" secondItem="qpo-L2-Uwo" secondAttribute="top" constant="50" id="ycn-fo-mwv"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qpo-L2-Uwo"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="gzu-l2-r7v"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pzV-9k-4Q6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-641.51785714285711" y="124.6376811594203"/>
-        </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -74,7 +24,4 @@
             <point key="canvasLocation" x="110" y="125"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="colored_land" width="1024" height="1024"/>
-    </resources>
 </document>

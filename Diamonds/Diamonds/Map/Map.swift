@@ -18,6 +18,9 @@ class Map: SKScene {
     var level3Node: SKSpriteNode!
     var level4Node: SKSpriteNode!
     var level5Node: SKSpriteNode!
+    // Start spaceship node
+    // End spaceship node
+    var level6Node: SKSpriteNode!
     var controller: Controller!
     var myCamera: SKCameraNode = SKCameraNode()
     
@@ -25,6 +28,9 @@ class Map: SKScene {
     static var isLevelLocked: [Bool] = [
         false,
         false,
+        true,
+        true,
+        true,
         true,
         true,
         true,
@@ -56,7 +62,7 @@ class Map: SKScene {
             self.myCamera.addChild(button)
         }
         
-        self.controller.setCommand(button: .A, command: CommandSelect())
+//        self.controller.setCommand(button: .A, command: CommandSelect())
         
         if let isDone = self.userData?.value(forKey: "Level\(Map.currentLevel)") as? String {
             if isDone == "Done" {
@@ -80,6 +86,9 @@ class Map: SKScene {
         self.level3Node = self.childNode(withName: "Level3Node") as? SKSpriteNode
         self.level4Node = self.childNode(withName: "Level4Node") as? SKSpriteNode
         self.level5Node = self.childNode(withName: "Level5Node") as? SKSpriteNode
+        // Start spaceship
+        // End spaceship
+        self.level6Node = self.childNode(withName: "Level6Node") as? SKSpriteNode
         
         self.player.levelsPosition.append(self.player.position)
         self.player.levelsPosition.append(self.level1Node.position)
@@ -87,6 +96,9 @@ class Map: SKScene {
         self.player.levelsPosition.append(self.level3Node.position)
         self.player.levelsPosition.append(self.level4Node.position)
         self.player.levelsPosition.append(self.level5Node.position)
+        // Append start
+        // Append end
+        self.player.levelsPosition.append(self.level6Node.position)
     }
     
     func presentScene(index: Int) {

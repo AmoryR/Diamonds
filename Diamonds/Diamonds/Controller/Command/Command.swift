@@ -11,3 +11,27 @@ import Foundation
 protocol Command {
     func execute(actor: Actor)
 }
+
+class CommandRight: Command {
+    init() {}
+    
+    func execute(actor: Actor) {
+        actor.commandRightCallback()
+    }
+}
+
+class CommandLeft: Command {
+    init() {}
+    
+    func execute(actor: Actor) {
+        actor.commandLeftCallback()
+    }
+}
+
+class CommandA: Command {
+    init() {}
+    
+    func execute(actor: Actor) {
+        actor.commandACallback()
+    }
+}

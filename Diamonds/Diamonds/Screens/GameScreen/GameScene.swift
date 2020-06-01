@@ -60,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case "buttonLeft":
             self.player?.stop(actionKey: .MOVE_LEFT)
             self.player?.stop(actionKey: .ANIMATE_LEFT)
-            
+
             self.buttonsPressed.remove(at: self.buttonsPressed.count - 1)
             self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
             break
@@ -72,15 +72,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
             break
         case "buttonA":
-            self.buttonsPressed.remove(at: self.buttonsPressed.count - 1)
-        
-            if self.player?.state == PlayerState.NORMAL {
-                self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
-            } else if self.player?.state == PlayerState.CLIMBING {
-                self.player?.stop(actionKey: .CLIMB)
-                self.player?.stop(actionKey: .ANIMATE_CLIMB)
-            }
-            
+//            self.buttonsPressed.remove(at: self.buttonsPressed.count - 1)
+//
+//            if self.player?.state == PlayerState.NORMAL {
+//                self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
+//            } else if self.player?.state == PlayerState.CLIMBING {
+//                self.player?.stop(actionKey: .CLIMB)
+//                self.player?.stop(actionKey: .ANIMATE_CLIMB)
+//            }
+
             break
         default:
             print("No matching button!")
@@ -92,6 +92,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
+//        print("contact")
+        
+        // Box
+        if contact.bodyA.node?.name == "Box" || contact.bodyB.node?.name == "Box" {
+            self.player?.isJumping = false
+        }
         
         // Flag
         if contact.bodyA.node?.name == "Flag" || contact.bodyB.node?.name == "Flag" {
@@ -140,27 +146,87 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Contact with a ladder
         if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {
-            print("contact with ladder")
+//            print("contact with ladder")
             
-            self.physicsWorld.gravity = .zero
+//            self.physicsWorld.gravity = .zero // Trick so that the animation works
+            self.player?.currentLadderBox = contact.bodyA.node! as? SKSpriteNode
             self.player?.setState(state: .CLIMBING)
-            self.controller?.setCommand(button: .A, command: CommandClimb())
+//            print(contact.bodyA.node?.position)
+//            self.controller?.setCommand(button: .A, command: CommandClimb())
         }
+        
+        // ONLY WORKS ON LEVEL 6
+        
+        // Teleporter
+        if contact.bodyA.node?.name == "TeleporterEntrance1" ||
+            contact.bodyB.node?.name == "TeleporterEntrance1" {
+            print("contact with tele 1")
+//            if let exit = self.childNode(withName: "TeleporterExit1") as? SKSpriteNode{
+//                print(exit.position)
+//            } else {
+//                print("no exit 1")
+//            }
+            self.player?.teleportEntrancePosition = contact.bodyA.node?.position
+            self.player?.teleportExitPosition = CGPoint(x: -576, y: 740)
+            self.player?.setState(state: .TELEPORT)
+            
+        }
+        
+        if contact.bodyA.node?.name == "TeleporterEntrance2" ||
+           contact.bodyB.node?.name == "TeleporterEntrance2" {
+           
+           self.player?.teleportEntrancePosition = contact.bodyA.node?.position
+           self.player?.teleportExitPosition = CGPoint(x: 3012, y: 740)
+           self.player?.setState(state: .TELEPORT)
+           
+       }
+
+        
+        
+//        if (contact.bodyA.node?.name?.contains("TeleporterEntrance"))! || (contact.bodyB.node?.name!.contains("TeleporterEntrance"))! {
+//            
+//            print("Contact with teleporter entrance")
+//            
+//        }
+        
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
-        self.player?.landFromJump()
+//        self.player?.landFromJump()
+//        self.player?.isJumping = false
         
-        // End contact with a ladder
+        
+//        // End contact with a ladder
         if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {
-            print("End contact with ladder")
-            
-            self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
-            self.player?.stop(actionKey: .CLIMB)
-            self.player?.stop(actionKey: .ANIMATE_CLIMB)
-            self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
+//            print("End contact with ladder")
             self.player?.setState(state: .NORMAL)
-            self.controller?.setCommand(button: .A, command: CommandJump())
+            
+            if self.player!.isClimbing {
+//                self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8) // Reset trick
+                
+//                self.player?.stop(actionKey: .CLIMB)
+//                self.player?.stop(actionKey: .ANIMATE_CLIMB)
+//                self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
+//                self.player?.setState(state: .NORMAL)
+//                self.player?.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+//                self.player?.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 20))
+//                
+//                self.player?.isClimbing = false
+//                self.player?.physicsBody?.affectedByGravity = true
+            }
+            
+            // Find a way to reset gravity but block player on top of ladder
+        }
+        
+        if contact.bodyA.node?.name == "TeleporterEntrance1" ||
+        contact.bodyB.node?.name == "TeleporterEntrance1" {
+            print("end contact with tele 1")
+            self.player?.setState(state: .NORMAL)
+        }
+        
+        if contact.bodyA.node?.name == "TeleporterEntrance2" ||
+        contact.bodyB.node?.name == "TeleporterEntrance2" {
+            self.player?.setState(state: .NORMAL)
         }
     }
     
@@ -181,6 +247,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         let y = CGFloat(row) * tileSize.height - halfHeight + (tileSize.height/2)
                         
                         let tileNode = SKNode()
+                        tileNode.name = "Box"
                         tileNode.position = CGPoint(x: x, y: y)
                         tileNode.physicsBody = SKPhysicsBody(rectangleOf: tileTexture.size())
                         tileNode.physicsBody?.affectedByGravity = false

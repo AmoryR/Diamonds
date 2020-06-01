@@ -28,23 +28,23 @@ class Controller {
     
     func resetCommands() {
         self.commandes = []
-        self.commandes.append(CommandMoveLeft())
-        self.commandes.append(CommandMoveRight())
-        self.commandes.append(CommandJump())
+        self.commandes.append(CommandLeft())
+        self.commandes.append(CommandRight())
+        self.commandes.append(CommandA())
     }
     
     func setCommand(button: Button) {
-        switch button {
-        case Button.LEFT:
-            self.commandes[0] = CommandMoveLeft()
-            break
-        case Button.RIGHT:
-            self.commandes[1] = CommandMoveRight()
-            break
-        case Button.A:
-            self.commandes[2] = CommandJump()
-            break
-        }
+//        switch button {
+//        case Button.LEFT:
+//            self.commandes[0] = CommandMoveLeft()
+//            break
+//        case Button.RIGHT:
+//            self.commandes[1] = CommandMoveRight()
+//            break
+//        case Button.A:
+//            self.commandes[2] = CommandJump()
+//            break
+//        }
     }
     
     func setCommand(button: Button, command: Command) {

@@ -6,28 +6,59 @@
 //  Copyright © 2020 Amory Rouault. All rights reserved.
 //
 
-import UIKit
+import SpriteKit
 
-class HomeScreenViewController: UIViewController {
+class HomeScreen: SKScene {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
+    override func didMove(to view: SKView) {
+        
+        // Background
+        guard let backgroundNode = self.childNode(withName: "Background") as? SKSpriteNode else {
+            fatalError("Can't found background node")
         }
+        backgroundNode.texture?.filteringMode = .nearest
+        
+        // Label
+        
+        // Play button
+        guard let playButtonNode = self.childNode(withName: "PlayButton") as? SKSpriteNode else {
+            fatalError("Can't found play button node")
+        }
+        playButtonNode.texture?.filteringMode = .nearest
+        
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     
+        guard let touch = touches.first else {
+            return
+        }
+        let location = touch.location(in: self)
+        let frontTouchedNode = atPoint(location).name
+        
+        if frontTouchedNode == "PlayButton" {
+            self.goToMap()
+        }
+        
+    }
+    
+    private func goToMap() {
+        if let view = self.view {
+            // Load the SKScene from 'Map.sks'
+            if let scene = SKScene(fileNamed: "Map") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+            view.showsPhysics = true
+        }
     }
     
 }

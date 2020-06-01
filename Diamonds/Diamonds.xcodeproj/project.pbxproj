@@ -16,7 +16,6 @@
 		9610C3292438F30300A9083E /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C3282438F30300A9083E /* Flag.swift */; };
 		9610C32B2438F51C00A9083E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9610C32A2438F51C00A9083E /* Level.swift */; };
 		9631CB8F243258C300371E32 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9631CB8E243258C300371E32 /* Background.swift */; };
-		9631CB912432602800371E32 /* CommandClimb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9631CB902432602800371E32 /* CommandClimb.swift */; };
 		9631CB93243276A600371E32 /* climb.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9631CB92243276A600371E32 /* climb.atlas */; };
 		9634F59724278DDA0093B280 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9634F59624278DDA0093B280 /* Level1.sks */; };
 		9634F59F2427953F0093B280 /* LevelsTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9634F59E2427953F0093B280 /* LevelsTileSet.sks */; };
@@ -24,9 +23,11 @@
 		964AD1362449F5BD00656CCB /* Map.sks in Resources */ = {isa = PBXBuildFile; fileRef = 964AD1352449F5BD00656CCB /* Map.sks */; };
 		964AD138244A0B3000656CCB /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD137244A0B3000656CCB /* Map.swift */; };
 		964AD13A244A0DC400656CCB /* MapPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD139244A0DC300656CCB /* MapPlayer.swift */; };
-		964AD13C244A0F2700656CCB /* CommandSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD13B244A0F2700656CCB /* CommandSelect.swift */; };
 		96507197243A18F800543253 /* CoinBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96507196243A18F800543253 /* CoinBox.swift */; };
+		966D5C182483BF3B004E9887 /* HomeScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 966D5C172483BF3B004E9887 /* HomeScreen.sks */; };
 		967FAFF9246FE029008FC0D8 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FAFF8246FE029008FC0D8 /* HomeScreen.swift */; };
+		96D39B10248170B9000CF5D9 /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D39B0F248170B9000CF5D9 /* Level6.swift */; };
+		96D39B122481721B000CF5D9 /* Level6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96D39B112481721B000CF5D9 /* Level6.sks */; };
 		96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE23B24256C56001F05AA /* AppDelegate.swift */; };
 		96EEE23E24256C56001F05AA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96EEE23D24256C56001F05AA /* GameScene.sks */; };
 		96EEE24224256C56001F05AA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE24124256C56001F05AA /* GameScene.swift */; };
@@ -39,8 +40,6 @@
 		96EEE280242573C0001F05AA /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE27F242573C0001F05AA /* Controller.swift */; };
 		96EEE28424257451001F05AA /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE28324257451001F05AA /* Actor.swift */; };
 		96EEE2862425745A001F05AA /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE2852425745A001F05AA /* Command.swift */; };
-		96EEE288242575B0001F05AA /* CommandMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE287242575B0001F05AA /* CommandMove.swift */; };
-		96EEE28A242575BD001F05AA /* CommandJump.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE289242575BD001F05AA /* CommandJump.swift */; };
 		96EEE28C24257788001F05AA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96EEE28B24257788001F05AA /* Player.swift */; };
 		96F9662B24542A66007BA191 /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9662A24542A66007BA191 /* Level2.swift */; };
 		96F9662D24542A6D007BA191 /* Level3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F9662C24542A6D007BA191 /* Level3.swift */; };
@@ -79,7 +78,6 @@
 		9610C3282438F30300A9083E /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		9610C32A2438F51C00A9083E /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		9631CB8E243258C300371E32 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
-		9631CB902432602800371E32 /* CommandClimb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandClimb.swift; sourceTree = "<group>"; };
 		9631CB92243276A600371E32 /* climb.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = climb.atlas; sourceTree = "<group>"; };
 		9634F59624278DDA0093B280 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		9634F59E2427953F0093B280 /* LevelsTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelsTileSet.sks; sourceTree = "<group>"; };
@@ -87,9 +85,11 @@
 		964AD1352449F5BD00656CCB /* Map.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Map.sks; sourceTree = "<group>"; };
 		964AD137244A0B3000656CCB /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		964AD139244A0DC300656CCB /* MapPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlayer.swift; sourceTree = "<group>"; };
-		964AD13B244A0F2700656CCB /* CommandSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSelect.swift; sourceTree = "<group>"; };
 		96507196243A18F800543253 /* CoinBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinBox.swift; sourceTree = "<group>"; };
+		966D5C172483BF3B004E9887 /* HomeScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScreen.sks; sourceTree = "<group>"; };
 		967FAFF8246FE029008FC0D8 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		96D39B0F248170B9000CF5D9 /* Level6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
+		96D39B112481721B000CF5D9 /* Level6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level6.sks; sourceTree = "<group>"; };
 		96EEE23824256C56001F05AA /* Diamonds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diamonds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96EEE23B24256C56001F05AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96EEE23D24256C56001F05AA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -108,8 +108,6 @@
 		96EEE27F242573C0001F05AA /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		96EEE28324257451001F05AA /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		96EEE2852425745A001F05AA /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		96EEE287242575B0001F05AA /* CommandMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandMove.swift; sourceTree = "<group>"; };
-		96EEE289242575BD001F05AA /* CommandJump.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandJump.swift; sourceTree = "<group>"; };
 		96EEE28B24257788001F05AA /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		96F9662A24542A66007BA191 /* Level2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		96F9662C24542A6D007BA191 /* Level3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level3.swift; sourceTree = "<group>"; };
@@ -164,6 +162,7 @@
 				96F9662724542A21007BA191 /* Level3 */,
 				96F9662824542A28007BA191 /* Level4 */,
 				96F9662924542A30007BA191 /* Level5 */,
+				96D39B0E248170A1000CF5D9 /* Level6 */,
 				9610C32A2438F51C00A9083E /* Level.swift */,
 			);
 			path = Levels;
@@ -191,6 +190,7 @@
 		967FAFF5246FDE6B008FC0D8 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				966D5C172483BF3B004E9887 /* HomeScreen.sks */,
 				967FAFF8246FE029008FC0D8 /* HomeScreen.swift */,
 			);
 			path = HomeScreen;
@@ -201,7 +201,6 @@
 			children = (
 				96EEE23D24256C56001F05AA /* GameScene.sks */,
 				96EEE24124256C56001F05AA /* GameScene.swift */,
-				96EEE24324256C56001F05AA /* GameViewController.swift */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
@@ -209,6 +208,7 @@
 		96CA5B8A24702C0400FBF54F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				96EEE24324256C56001F05AA /* GameViewController.swift */,
 				96CA5B8924702BF400FBF54F /* GameScreen */,
 				967FAFF5246FDE6B008FC0D8 /* HomeScreen */,
 			);
@@ -225,6 +225,15 @@
 				96507196243A18F800543253 /* CoinBox.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		96D39B0E248170A1000CF5D9 /* Level6 */ = {
+			isa = PBXGroup;
+			children = (
+				96D39B112481721B000CF5D9 /* Level6.sks */,
+				96D39B0F248170B9000CF5D9 /* Level6.swift */,
+			);
+			path = Level6;
 			sourceTree = "<group>";
 		};
 		96EEE22F24256C56001F05AA = {
@@ -301,10 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				96EEE2852425745A001F05AA /* Command.swift */,
-				96EEE287242575B0001F05AA /* CommandMove.swift */,
-				96EEE289242575BD001F05AA /* CommandJump.swift */,
-				9631CB902432602800371E32 /* CommandClimb.swift */,
-				964AD13B244A0F2700656CCB /* CommandSelect.swift */,
 			);
 			path = Command;
 			sourceTree = "<group>";
@@ -458,12 +463,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				96EEE24724256C56001F05AA /* Main.storyboard in Resources */,
+				96D39B122481721B000CF5D9 /* Level6.sks in Resources */,
 				96EEE23E24256C56001F05AA /* GameScene.sks in Resources */,
 				9634F59724278DDA0093B280 /* Level1.sks in Resources */,
 				96F9663724542AA3007BA191 /* Level4.sks in Resources */,
 				96F9663924542AAB007BA191 /* Level5.sks in Resources */,
 				960ECA032466F25F00606F04 /* Dev.sks in Resources */,
 				964AD1362449F5BD00656CCB /* Map.sks in Resources */,
+				966D5C182483BF3B004E9887 /* HomeScreen.sks in Resources */,
 				9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */,
 				9631CB93243276A600371E32 /* climb.atlas in Resources */,
 				96EEE24924256C58001F05AA /* Assets.xcassets in Resources */,
@@ -498,19 +505,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				9631CB8F243258C300371E32 /* Background.swift in Sources */,
+				96D39B10248170B9000CF5D9 /* Level6.swift in Sources */,
 				9610C3292438F30300A9083E /* Flag.swift in Sources */,
 				9634F5A224279FF50093B280 /* Level1.swift in Sources */,
 				96F9662D24542A6D007BA191 /* Level3.swift in Sources */,
 				9610C32B2438F51C00A9083E /* Level.swift in Sources */,
 				964AD138244A0B3000656CCB /* Map.swift in Sources */,
 				96F9662B24542A66007BA191 /* Level2.swift in Sources */,
-				964AD13C244A0F2700656CCB /* CommandSelect.swift in Sources */,
 				96EEE24224256C56001F05AA /* GameScene.swift in Sources */,
 				96EEE24424256C56001F05AA /* GameViewController.swift in Sources */,
 				96EEE23C24256C56001F05AA /* AppDelegate.swift in Sources */,
 				967FAFF9246FE029008FC0D8 /* HomeScreen.swift in Sources */,
 				960ECA052466F28500606F04 /* Dev.swift in Sources */,
-				96EEE288242575B0001F05AA /* CommandMove.swift in Sources */,
 				96F9663124542A81007BA191 /* Level5.swift in Sources */,
 				96EEE280242573C0001F05AA /* Controller.swift in Sources */,
 				9610C3252438E9BA00A9083E /* HUD.swift in Sources */,
@@ -520,8 +526,6 @@
 				96EEE2862425745A001F05AA /* Command.swift in Sources */,
 				96EEE28C24257788001F05AA /* Player.swift in Sources */,
 				964AD13A244A0DC400656CCB /* MapPlayer.swift in Sources */,
-				96EEE28A242575BD001F05AA /* CommandJump.swift in Sources */,
-				9631CB912432602800371E32 /* CommandClimb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
