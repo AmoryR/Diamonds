@@ -207,21 +207,20 @@ class Player: SKSpriteNode, Actor {
                 
             // Down
             } else {
-//                self.run(SKAction.repeatForever(self.climbDownAction), withKey: PlayerActionsKeys.CLIMB.rawValue)
-//                climbAction = SKAction.moveBy(x: 0, y: -ladderBox.size.height, duration: timeToClimb)
+                climbAction = SKAction.moveBy(x: 0, y: -ladderBox.size.height + 64, duration: timeToClimb)
+                self.run(climbAction, completion: self.stopClimbing)
             }
         }
         
     }
     
     private func teleport() {
-        print("teleport")
         
         // No gravity
         self.physicsBody?.affectedByGravity = false
         // Move to center while rotate and scale down
         let moveToCenterAction = SKAction.move(to: self.teleportEntrancePosition!, duration: 0.5)
-        let rotateAction = SKAction.rotate(byAngle: 360, duration: 0.5)
+//        let rotateAction = SKAction.rotate(byAngle: 360, duration: 0.5)
         let scaleDownAction = SKAction.scale(to: 0.2, duration: 0.5)
         let fadeOutAction = SKAction.fadeOut(withDuration: 0.5)
         

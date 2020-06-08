@@ -8,14 +8,19 @@
 
 import Foundation
 
-enum Direction {
-    case LEFT
-    case RIGHT
-}
+//enum Direction {
+//    case LEFT
+//    case RIGHT
+//}
 
 protocol Actor {
-    func move(direction: Direction)
-    func jump()
-    func climb()
-    func select()
+    
+    func commandRightCallback()
+    func commandLeftCallback()
+    func commandACallback()
+    
+//    func move(direction: Direction)
+//    func jump()
+//    func climb()
+//    func select()
 }

@@ -9,6 +9,12 @@
 import SpriteKit
 import GameplayKit
 
+enum GameSceneState {
+    case PLAYING
+    case ENDED
+    case LOST
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player: Player?
@@ -16,6 +22,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hud: HUD?
     var myCamera: SKCameraNode = SKCameraNode()
     var buttonsPressed: [String] = []
+    
+    
+    let endTitle = SKLabelNode(text: "Well Done!")
+    let endSubTitle = SKLabelNode(text: "Tap the screen to return to the map")
+    
+    var firework = Firework()
+    
+    var currentState: GameSceneState = .PLAYING
  
     override func didMove(to view: SKView) {
         
@@ -43,9 +57,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.contactDelegate = self
         
+        self.player?.addChild(self.firework)
+        self.currentState = .PLAYING
+        
+        self.endTitle.fontSize = 48
+        self.endTitle.fontColor = .black
+        self.endTitle.fontName = "AvenirNext-Bold"
+        self.endTitle.position.y = 300
+        self.endTitle.zPosition = 10
+        
+        self.endSubTitle.fontSize = 32
+        self.endSubTitle.fontColor = .black
+        self.endSubTitle.fontName = "AvenirNext-Bold"
+        self.endSubTitle.position.y = 250
+        self.endSubTitle.zPosition = 10
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        if self.currentState == .ENDED {
+            self.firework.stopFirework()
+            self.endTitle.removeFromParent()
+            self.endSubTitle.removeFromParent()
+//            self.goToMap()
+            return
+        } else if self.currentState == .LOST {
+            self.goToMap()
+            return
+        }
         
         for touch in touches {
             let touchedNode = atPoint(touch.location(in: self))
@@ -72,6 +112,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.player!.texture = SKTexture(imageNamed: "alienGreen_front")
             break
         case "buttonA":
+            self.buttonsPressed.remove(at: self.buttonsPressed.count - 1)
+            
 //            self.buttonsPressed.remove(at: self.buttonsPressed.count - 1)
 //
 //            if self.player?.state == PlayerState.NORMAL {
@@ -106,7 +148,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             // 1. Show coins and diamonds collected
             // 2. Button to go back to map
 //            Map.currentLevelDone()
-            self.goToMap()
+//            self.levelEnded()
+            // firework animation + text ...
+            self.levelEndedAnimations()
             return
         }
         
@@ -137,6 +181,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Coin box
         if contact.bodyA.node?.name == "CoinBox" || contact.bodyB.node?.name == "CoinBox" {
             
+            if CGFloat(self.player!.position.y) > CGFloat(contact.bodyA.node!.position.y) {
+                return
+            }
+            
             let coinBox = contact.bodyA.node as? CoinBox
             if coinBox!.hit() {
                 self.hud?.collectCoin()
@@ -160,7 +208,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Teleporter
         if contact.bodyA.node?.name == "TeleporterEntrance1" ||
             contact.bodyB.node?.name == "TeleporterEntrance1" {
-            print("contact with tele 1")
 //            if let exit = self.childNode(withName: "TeleporterExit1") as? SKSpriteNode{
 //                print(exit.position)
 //            } else {
@@ -220,13 +267,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if contact.bodyA.node?.name == "TeleporterEntrance1" ||
         contact.bodyB.node?.name == "TeleporterEntrance1" {
-            print("end contact with tele 1")
             self.player?.setState(state: .NORMAL)
         }
         
         if contact.bodyA.node?.name == "TeleporterEntrance2" ||
         contact.bodyB.node?.name == "TeleporterEntrance2" {
             self.player?.setState(state: .NORMAL)
+        }
+        
+        if contact.bodyA.node?.name == "LostBox" ||
+        contact.bodyB.node?.name == "LostBox" {
+            self.currentState = .LOST
         }
     }
     
@@ -260,22 +311,83 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         tileMap.addChild(tileNode)
                     }
                     
+                    // May give problem with water ...
+                    if let _ = tileDefinition.userData?.value(forKey: "lostTile") {
+                        let tileTexture = tileDefinition.textures[0]
+                        let x = CGFloat(col) * tileSize.width - halfWidth + (tileSize.width/2)
+                        let y = CGFloat(row) * tileSize.height - halfHeight + (tileSize.height/2)
+                        
+                        let tileNode = SKNode()
+                        tileNode.name = "LostBox"
+                        tileNode.position = CGPoint(x: x, y: y)
+                        tileNode.physicsBody = SKPhysicsBody(rectangleOf: tileTexture.size())
+                        tileNode.physicsBody?.affectedByGravity = false
+                        tileNode.physicsBody?.allowsRotation = false
+                        tileNode.physicsBody?.restitution = 0.0
+                        tileNode.physicsBody?.isDynamic = false
+                        
+                        tileNode.physicsBody?.categoryBitMask = 0x1
+                        
+                        tileMap.addChild(tileNode)
+                    }
+                    
                 }
             }
         }
     }
     
+    func levelEndedAnimations() {
+        self.currentState = .ENDED
+        
+        
+        self.firework.startFirework()
+        self.hud!.remove()
+        
+        self.player?.addChild(self.endTitle)
+        self.player?.addChild(self.endSubTitle)
+    }
+    
+    func levelEnded() {
+//        if Map.currentLevel < 6 {
+//            self.goToMap()
+//        } else {
+//            self.goToHome()
+//        }
+        self.goToMap()
+    }
+    
+    func goToHome() {
+        if let view = self.view {
+            // Load the SKScene from 'Map.sks'
+            if let scene = SKScene(fileNamed: "HomeScreen") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            
+            view.showsFPS = true
+            view.showsNodeCount = true
+            view.showsPhysics = true
+        }
+    }
+    
     func goToMap() {
+        
         if let view = self.view {
             // Load the SKScene from 'Map.sks'
             if let scene = SKScene(fileNamed: "Map") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
 
-                if scene.userData == nil {
-                    scene.userData = NSMutableDictionary(capacity: 1)
-                }
-                scene.userData?.setValue("Done", forKey: "Level\(Map.currentLevel)")
+//                if scene.userData == nil {
+//                    scene.userData = NSMutableDictionary(capacity: 1)
+//                }
+//                scene.userData?.setValue("Done", forKey: "Level\(Map.currentLevel)")
+                Map.levelsDone[Map.currentLevel] = true
                 
                 // Present the scene
                 view.presentScene(scene)

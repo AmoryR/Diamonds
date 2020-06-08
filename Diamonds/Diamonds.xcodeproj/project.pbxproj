@@ -25,6 +25,8 @@
 		964AD13A244A0DC400656CCB /* MapPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD139244A0DC300656CCB /* MapPlayer.swift */; };
 		96507197243A18F800543253 /* CoinBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96507196243A18F800543253 /* CoinBox.swift */; };
 		966D5C182483BF3B004E9887 /* HomeScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 966D5C172483BF3B004E9887 /* HomeScreen.sks */; };
+		967CE487248C0A8F00A35C5E /* Firework.sks in Resources */ = {isa = PBXBuildFile; fileRef = 967CE486248C0A8F00A35C5E /* Firework.sks */; };
+		967CE489248C0A9D00A35C5E /* Firework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967CE488248C0A9D00A35C5E /* Firework.swift */; };
 		967FAFF9246FE029008FC0D8 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FAFF8246FE029008FC0D8 /* HomeScreen.swift */; };
 		96D39B10248170B9000CF5D9 /* Level6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D39B0F248170B9000CF5D9 /* Level6.swift */; };
 		96D39B122481721B000CF5D9 /* Level6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 96D39B112481721B000CF5D9 /* Level6.sks */; };
@@ -87,6 +89,8 @@
 		964AD139244A0DC300656CCB /* MapPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlayer.swift; sourceTree = "<group>"; };
 		96507196243A18F800543253 /* CoinBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinBox.swift; sourceTree = "<group>"; };
 		966D5C172483BF3B004E9887 /* HomeScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScreen.sks; sourceTree = "<group>"; };
+		967CE486248C0A8F00A35C5E /* Firework.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firework.sks; sourceTree = "<group>"; };
+		967CE488248C0A9D00A35C5E /* Firework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firework.swift; sourceTree = "<group>"; };
 		967FAFF8246FE029008FC0D8 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		96D39B0F248170B9000CF5D9 /* Level6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level6.swift; sourceTree = "<group>"; };
 		96D39B112481721B000CF5D9 /* Level6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level6.sks; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				9610C3242438E9BA00A9083E /* HUD.swift */,
 				9610C3282438F30300A9083E /* Flag.swift */,
 				96507196243A18F800543253 /* CoinBox.swift */,
+				967CE488248C0A9D00A35C5E /* Firework.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				96EEE24A24256C58001F05AA /* LaunchScreen.storyboard */,
 				96EEE24D24256C58001F05AA /* Info.plist */,
 				9634F59E2427953F0093B280 /* LevelsTileSet.sks */,
+				967CE486248C0A8F00A35C5E /* Firework.sks */,
 			);
 			path = Diamonds;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967CE487248C0A8F00A35C5E /* Firework.sks in Resources */,
 				96EEE24724256C56001F05AA /* Main.storyboard in Resources */,
 				96D39B122481721B000CF5D9 /* Level6.sks in Resources */,
 				96EEE23E24256C56001F05AA /* GameScene.sks in Resources */,
@@ -506,6 +513,7 @@
 			files = (
 				9631CB8F243258C300371E32 /* Background.swift in Sources */,
 				96D39B10248170B9000CF5D9 /* Level6.swift in Sources */,
+				967CE489248C0A9D00A35C5E /* Firework.swift in Sources */,
 				9610C3292438F30300A9083E /* Flag.swift in Sources */,
 				9634F5A224279FF50093B280 /* Level1.swift in Sources */,
 				96F9662D24542A6D007BA191 /* Level3.swift in Sources */,

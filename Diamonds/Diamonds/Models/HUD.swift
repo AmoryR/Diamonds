@@ -87,4 +87,8 @@ class HUD {
         node?.texture = self.collectedDiamondTexture
     }
     
+    func remove() {
+        self.hud?.removeFromParent()
+    }
+    
 }
