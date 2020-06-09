@@ -133,7 +133,6 @@ class Player: SKSpriteNode, Actor {
         self.texture = SKTexture(imageNamed: "alienGreen_front")
         
         self.isClimbing = false
-//        self.physicsBody?.affectedByGravity = true
         self.stop(actionKey: PlayerActionsKeys.ANIMATE_CLIMB)
         
     }
@@ -160,6 +159,25 @@ class Player: SKSpriteNode, Actor {
                  withKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue)
             
             break
+        }
+    }
+    
+    func die() {
+        
+        // Find a good animation
+        if Map.currentLevel <= 5 {
+            self.texture = SKTexture(imageNamed: "alienGreen_hit")
+            self.physicsBody?.affectedByGravity = false
+            self.physicsBody?.allowsRotation = true
+            self.run(SKAction.move(by: CGVector(dx: 0, dy: 50), duration: 1))
+            self.run(SKAction.fadeAlpha(to: 0, duration: 2))
+        } else {
+             // Space level
+            self.physicsBody?.affectedByGravity = false
+            self.physicsBody?.velocity = .zero
+            self.run(SKAction.fadeAlpha(to: 0, duration: 2)) {
+                self.removeFromParent()
+            }
         }
     }
     

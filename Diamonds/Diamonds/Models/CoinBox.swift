@@ -26,10 +26,9 @@ class CoinBox: SKSpriteNode {
         if self.lastHit {
             return false
         } else if self.coins <= 0 {
-            // TODO: Change texture
             self.texture = self.emptyTexture
             self.lastHit = true
-            return false
+            return true
         } else {
             return true
         }

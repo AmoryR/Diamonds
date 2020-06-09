@@ -38,6 +38,10 @@ class Level2: GameScene, Level {
             self.giveTileMapPhysicsBody(map: ground)
         }
         
+        if let underground = self.childNode(withName: "Underground") as? SKTileMapNode {
+            self.giveTileMapPhysicsBody(map: underground)
+        }
+        
         if let objects = self.childNode(withName: "Objects") as? SKTileMapNode {
             self.giveTileMapPhysicsBody(map: objects)
         }
