@@ -33,6 +33,7 @@ class Player: SKSpriteNode, Actor {
     private var moveLeftFrames: [SKTexture] = []
     private var moveRightFrames: [SKTexture] = []
     private var climbFrames: [SKTexture] = []
+    private var jumpFrames: [SKTexture] = []
     
     private let moveRightAction = SKAction.moveBy(x: 30, y: 0, duration: 0.1)
     private let moveLeftAction = SKAction.moveBy(x: -30, y: 0, duration: 0.1)
@@ -88,6 +89,13 @@ class Player: SKSpriteNode, Actor {
             let textureName = "alienGreen_climb\(i)"
             self.climbFrames.append(climbAtlas.textureNamed(textureName))
         }
+        
+        // Jump
+        let jumpAtlas = SKTextureAtlas(named: "jump")
+        let textureJumpRightName = "alienGreen_jump_right"
+        let textureJumpLeftName = "alienGreen_jump_left"
+        self.jumpFrames.append(jumpAtlas.textureNamed(textureJumpRightName))
+        self.jumpFrames.append(jumpAtlas.textureNamed(textureJumpLeftName))
     }
     
     func buildPhysics() {
@@ -123,12 +131,36 @@ class Player: SKSpriteNode, Actor {
     func stopClimbing() {
         
         self.texture = SKTexture(imageNamed: "alienGreen_front")
-        self.setState(state: .NORMAL)
         
         self.isClimbing = false
-        self.physicsBody?.affectedByGravity = true
+//        self.physicsBody?.affectedByGravity = true
         self.stop(actionKey: PlayerActionsKeys.ANIMATE_CLIMB)
         
+    }
+    
+    func animateMoving(direction: Direction) {
+        switch direction {
+        case .LEFT:
+            
+            if let _ = self.action(forKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue) {
+                return
+            }
+            
+            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveLeftFrames, timePerFrame: 0.1)),
+                     withKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue)
+            
+            break
+        case .RIGHT:
+            
+            if let _ = self.action(forKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue) {
+                return
+            }
+            
+            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveRightFrames, timePerFrame: 0.1)),
+                 withKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue)
+            
+            break
+        }
     }
     
     // MARK: Private methods
@@ -149,8 +181,11 @@ class Player: SKSpriteNode, Actor {
             }
 
             self.run(SKAction.repeatForever(self.moveLeftAction), withKey: PlayerActionsKeys.MOVE_LEFT.rawValue)
-            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveLeftFrames, timePerFrame: 0.1)),
-                     withKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue)
+            
+            if !self.isJumping {
+                self.run(SKAction.repeatForever(SKAction.animate(with: self.moveLeftFrames, timePerFrame: 0.1)),
+                         withKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue)
+            }
             
             break
         case .RIGHT:
@@ -160,8 +195,10 @@ class Player: SKSpriteNode, Actor {
             }
             
             self.run(SKAction.repeatForever(self.moveRightAction), withKey: PlayerActionsKeys.MOVE_RIGHT.rawValue)
-            self.run(SKAction.repeatForever(SKAction.animate(with: self.moveRightFrames, timePerFrame: 0.1)),
+            if !self.isJumping {
+                self.run(SKAction.repeatForever(SKAction.animate(with: self.moveRightFrames, timePerFrame: 0.1)),
                      withKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue)
+            }
             
             break
         }
@@ -174,6 +211,21 @@ class Player: SKSpriteNode, Actor {
             self.isJumping = true
             self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
             self.physicsBody?.applyImpulse(CGVector(dx: 0, dy: self.jumpForce))
+            
+            if let _ = self.action(forKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue) {
+                self.removeAction(forKey: PlayerActionsKeys.ANIMATE_LEFT.rawValue)
+                self.texture = self.jumpFrames[1]
+                return
+            }
+            
+            if let _ = self.action(forKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue) {
+               self.removeAction(forKey: PlayerActionsKeys.ANIMATE_RIGHT.rawValue)
+               self.texture = self.jumpFrames[0]
+               return
+           }
+
+            
+            self.texture = self.jumpFrames[0]
         }
         
     }
@@ -202,12 +254,12 @@ class Player: SKSpriteNode, Actor {
             
             // Up
             if self.position.y < ladderBox.position.y {
-                climbAction = SKAction.moveBy(x: 0, y: ladderBox.size.height + 64, duration: timeToClimb)
+                climbAction = SKAction.moveBy(x: 0, y: ladderBox.size.height - 128, duration: timeToClimb)
                 self.run(climbAction, completion: self.stopClimbing)
                 
             // Down
             } else {
-                climbAction = SKAction.moveBy(x: 0, y: -ladderBox.size.height + 64, duration: timeToClimb)
+                climbAction = SKAction.moveBy(x: 0, y: -ladderBox.size.height + 128, duration: timeToClimb)
                 self.run(climbAction, completion: self.stopClimbing)
             }
         }

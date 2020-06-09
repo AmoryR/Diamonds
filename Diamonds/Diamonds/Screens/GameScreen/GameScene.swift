@@ -138,7 +138,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Box
         if contact.bodyA.node?.name == "Box" || contact.bodyB.node?.name == "Box" {
-            self.player?.isJumping = false
+            
+            if self.player!.isJumping {
+                self.player?.isJumping = false
+                
+                if let _ = self.player!.action(forKey: PlayerActionsKeys.MOVE_LEFT.rawValue) {
+                    print("the player is moving left")
+                    self.player?.animateMoving(direction: .LEFT)
+                    return
+                }
+                
+                if let _ = self.player!.action(forKey: PlayerActionsKeys.MOVE_RIGHT.rawValue) {
+                    print("the player is moving right")
+                    self.player?.animateMoving(direction: .RIGHT)
+                    return
+                }
+                
+                print("the player is not moving")
+                self.player?.texture = SKTexture(imageNamed: "alienGreen_front")
+            }
         }
         
         // Flag
@@ -199,6 +217,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            self.physicsWorld.gravity = .zero // Trick so that the animation works
             self.player?.currentLadderBox = contact.bodyA.node! as? SKSpriteNode
             self.player?.setState(state: .CLIMBING)
+            self.player?.physicsBody?.affectedByGravity = false
+            self.player?.physicsBody?.velocity = .zero
 //            print(contact.bodyA.node?.position)
 //            self.controller?.setCommand(button: .A, command: CommandClimb())
         }
@@ -247,6 +267,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.node?.name == "LadderBox" || contact.bodyB.node?.name == "LadderBox" {
 //            print("End contact with ladder")
             self.player?.setState(state: .NORMAL)
+            self.player?.physicsBody?.affectedByGravity = true
             
             if self.player!.isClimbing {
 //                self.physicsWorld.gravity = CGVector(dx: 0, dy: -9.8) // Reset trick

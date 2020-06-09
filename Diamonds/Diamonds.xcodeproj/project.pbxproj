@@ -24,6 +24,7 @@
 		964AD138244A0B3000656CCB /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD137244A0B3000656CCB /* Map.swift */; };
 		964AD13A244A0DC400656CCB /* MapPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964AD139244A0DC300656CCB /* MapPlayer.swift */; };
 		96507197243A18F800543253 /* CoinBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96507196243A18F800543253 /* CoinBox.swift */; };
+		966D0E6B248FB59A00204951 /* jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 966D0E6A248FB59A00204951 /* jump.atlas */; };
 		966D5C182483BF3B004E9887 /* HomeScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 966D5C172483BF3B004E9887 /* HomeScreen.sks */; };
 		967CE487248C0A8F00A35C5E /* Firework.sks in Resources */ = {isa = PBXBuildFile; fileRef = 967CE486248C0A8F00A35C5E /* Firework.sks */; };
 		967CE489248C0A9D00A35C5E /* Firework.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967CE488248C0A9D00A35C5E /* Firework.swift */; };
@@ -88,6 +89,7 @@
 		964AD137244A0B3000656CCB /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		964AD139244A0DC300656CCB /* MapPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlayer.swift; sourceTree = "<group>"; };
 		96507196243A18F800543253 /* CoinBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinBox.swift; sourceTree = "<group>"; };
+		966D0E6A248FB59A00204951 /* jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = jump.atlas; sourceTree = "<group>"; };
 		966D5C172483BF3B004E9887 /* HomeScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeScreen.sks; sourceTree = "<group>"; };
 		967CE486248C0A8F00A35C5E /* Firework.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firework.sks; sourceTree = "<group>"; };
 		967CE488248C0A9D00A35C5E /* Firework.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Firework.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				9606D2E42426512E00E0F63A /* moveRight.atlas */,
 				9610C3262438F2E800A9083E /* blueFlag.atlas */,
 				9631CB92243276A600371E32 /* climb.atlas */,
+				966D0E6A248FB59A00204951 /* jump.atlas */,
 				9634F59524278DBF0093B280 /* Levels */,
 				964AD1342449F59C00656CCB /* Map */,
 				96EEE27E242573AC001F05AA /* Controller */,
@@ -477,6 +480,7 @@
 				96F9663924542AAB007BA191 /* Level5.sks in Resources */,
 				960ECA032466F25F00606F04 /* Dev.sks in Resources */,
 				964AD1362449F5BD00656CCB /* Map.sks in Resources */,
+				966D0E6B248FB59A00204951 /* jump.atlas in Resources */,
 				966D5C182483BF3B004E9887 /* HomeScreen.sks in Resources */,
 				9606D2E52426512E00E0F63A /* moveRight.atlas in Resources */,
 				9631CB93243276A600371E32 /* climb.atlas in Resources */,
